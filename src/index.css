@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --sky-primary: #0284c7;
+    --sky-dark: #0369a1;
+    --sky-deep: #075985;
+    --sky-navy: #0c4a6e;
+    --sky-light: #e0f2fe;
+    --sky-accent: #0ea5e9;
+    --sky-highlight: #38bdf8;
+    --accent-yellow: #f59e0b;
+    --accent-yellow-hover: #d97706;
+    --charcoal: #1e293b;
+    --charcoal-light: #475569;
+    --charcoal-dark: #0f172a;
+    --white: #FFFFFF;
+    --gray-bg: #f8fafc;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.border-structure {
+  border: 1px solid #cbd5e1;
+}
+
+.bg-royal {
+  background-color: #0284c7;
+}
+
+.bg-royal-dark {
+  background-color: #0369a1;
+}
+
+.bg-sky-brand {
+  background-color: #0284c7;
+}
+
+.bg-sky-brand-dark {
+  background-color: #0369a1;
+}
+
+.bg-yellow-accent {
+  background-color: #f59e0b;
+}
+
+.text-royal {
+  color: #0284c7;
+}
+
+.text-charcoal {
+  color: #1e293b;
+}
+
+.border-royal {
+  border-color: #0284c7;
+}
+
+.border-charcoal {
+  border-color: #cbd5e1;
+}
+
+.border-yellow-accent {
+  border-color: #f59e0b;
+}
+
+.tab-active {
+  border-bottom: 4px solid #f59e0b;
+  color: #f59e0b !important;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header,
+  footer,
+  nav,
+  aside,
+  .print-hidden,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  #printable-passport-container {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+

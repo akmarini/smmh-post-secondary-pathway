@@ -1,0 +1,6 @@
+{
+  "name": "SMMH Hala Tuju: Post-O Level Pathway Navigator",
+  "description": "Post-O Level Pathway Navigator and RIASEC Career Matching System for students, parents, and counselors of Sekolah Menengah Muda Hashim Tutong, Brunei.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
