@@ -95,7 +95,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-amber-300 selection:text-sky-950">
+    <div className="min-h-screen bg-gradient-to-b from-sky-50/70 via-slate-50 to-amber-50/20 text-slate-800 flex flex-col font-sans selection:bg-yellow-300 selection:text-sky-950">
       {/* Toast Notification Layer */}
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
 
@@ -166,8 +166,8 @@ export default function App() {
         onClose={() => setIsCounselorModalOpen(false)}
       />
 
-      {/* Application Footer - Clean Minimalism Sky Blue */}
-      <footer className="bg-sky-900 text-white border-t border-sky-800 mt-auto print:hidden print-hidden">
+      {/* Application Footer - Modern Aesthetic Lighter Blue & Yellow */}
+      <footer className="bg-gradient-to-b from-sky-800 to-sky-950 text-white border-t-4 border-yellow-400 mt-auto print:hidden print-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* School Info */}
@@ -178,21 +178,21 @@ export default function App() {
                   <h3 className="font-bold text-sm tracking-wide text-white uppercase">
                     {t.schoolNameHeader}
                   </h3>
-                  <p className="text-xs text-amber-300 font-medium">
+                  <p className="text-xs text-yellow-300 font-bold">
                     {t.schoolUnit}
                   </p>
                 </div>
               </div>
-              <p className="text-xs text-sky-200 leading-relaxed max-w-md">
+              <p className="text-xs text-sky-100 leading-relaxed max-w-md">
                 {t.schoolMotto}
               </p>
-              <div className="flex items-center gap-4 text-xs text-sky-300 pt-1">
+              <div className="flex items-center gap-4 text-xs text-sky-200 pt-1">
                 <span className="flex items-center gap-1 font-mono text-[11px]">
-                  <MapPin className="w-3 h-3 text-amber-400" />
+                  <MapPin className="w-3.5 h-3.5 text-yellow-400" />
                   Daerah Tutong, TA1141
                 </span>
                 <span className="flex items-center gap-1 font-mono text-[11px]">
-                  <Phone className="w-3 h-3 text-amber-400" />
+                  <Phone className="w-3.5 h-3.5 text-yellow-400" />
                   +673 4221272
                 </span>
               </div>
@@ -200,14 +200,14 @@ export default function App() {
 
             {/* Quick Links */}
             <div className="space-y-2">
-              <h4 className="font-bold text-xs text-amber-300 uppercase tracking-wider">
+              <h4 className="font-bold text-xs text-yellow-300 uppercase tracking-wider">
                 {t.guidancePagesTitle}
               </h4>
-              <ul className="space-y-1.5 text-xs text-sky-200">
+              <ul className="space-y-1.5 text-xs text-sky-100">
                 <li>
                   <button
                     onClick={() => setActiveTab('calculator')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {t.calcTab}
                   </button>
@@ -215,7 +215,7 @@ export default function App() {
                 <li>
                   <button
                     onClick={() => setActiveTab('visualPathway')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {lang === 'ms' ? 'Peta Visual & Swasta' : 'Visual Pathways & Colleges'}
                   </button>
@@ -223,7 +223,7 @@ export default function App() {
                 <li>
                   <button
                     onClick={() => setActiveTab('riasec')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {t.riasecTab}
                   </button>
@@ -231,7 +231,7 @@ export default function App() {
                 <li>
                   <button
                     onClick={() => setActiveTab('careers')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {t.careersTab}
                   </button>
@@ -239,7 +239,7 @@ export default function App() {
                 <li>
                   <button
                     onClick={() => setActiveTab('passport')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {t.passportTab}
                   </button>
@@ -247,7 +247,7 @@ export default function App() {
                 <li>
                   <button
                     onClick={() => setActiveTab('parentshub')}
-                    className="hover:text-amber-300 transition-colors text-left"
+                    className="hover:text-yellow-300 transition-colors text-left cursor-pointer"
                   >
                     • {t.parentsTab}
                   </button>
@@ -257,19 +257,19 @@ export default function App() {
 
             {/* Portal Rasmi & Discrete Counselor Link */}
             <div className="space-y-2">
-              <h4 className="font-bold text-xs text-amber-300 uppercase tracking-wider">
+              <h4 className="font-bold text-xs text-yellow-300 uppercase tracking-wider">
                 {t.bruneiPortalsTitle}
               </h4>
-              <ul className="space-y-1.5 text-xs text-sky-200">
+              <ul className="space-y-1.5 text-xs text-sky-100">
                 <li>
                   <a
                     href="https://hecas.moe.gov.bn"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-amber-300 flex items-center gap-1"
+                    className="hover:text-yellow-300 flex items-center gap-1"
                   >
                     <span>• {t.portalHecas}</span>
-                    <ExternalLink className="w-3 h-3 text-sky-400" />
+                    <ExternalLink className="w-3 h-3 text-sky-300" />
                   </a>
                 </li>
                 <li>
@@ -277,10 +277,10 @@ export default function App() {
                     href="https://www.pb.edu.bn"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-amber-300 flex items-center gap-1"
+                    className="hover:text-yellow-300 flex items-center gap-1"
                   >
                     <span>• {t.portalPb}</span>
-                    <ExternalLink className="w-3 h-3 text-sky-400" />
+                    <ExternalLink className="w-3 h-3 text-sky-300" />
                   </a>
                 </li>
                 <li>
@@ -288,10 +288,10 @@ export default function App() {
                     href="https://ibte.edu.bn"
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-amber-300 flex items-center gap-1"
+                    className="hover:text-yellow-300 flex items-center gap-1"
                   >
                     <span>• {t.portalIbte}</span>
-                    <ExternalLink className="w-3 h-3 text-sky-400" />
+                    <ExternalLink className="w-3 h-3 text-sky-300" />
                   </a>
                 </li>
               </ul>
@@ -301,10 +301,10 @@ export default function App() {
                 <button
                   id="footer-counselor-portal-link"
                   onClick={() => setIsCounselorModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-sky-950 text-sky-200 hover:text-amber-300 text-xs font-bold uppercase tracking-wider border border-sky-700 hover:border-amber-400 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-900/90 text-sky-100 hover:text-yellow-300 hover:bg-sky-800 text-xs font-bold uppercase tracking-wider border border-sky-700 hover:border-yellow-400 transition-all cursor-pointer shadow-xs"
                   title={lang === 'ms' ? 'Akses khas Guru Kaunselor SMMH untuk eksport fail CSV / Excel' : 'SMMH Counselor access for student analytics & CSV export'}
                 >
-                  <Lock className="w-3.5 h-3.5 text-amber-400" />
+                  <Lock className="w-3.5 h-3.5 text-yellow-400" />
                   <span>{t.counselorPortal}</span>
                 </button>
               </div>
@@ -312,12 +312,12 @@ export default function App() {
           </div>
 
           {/* Bottom Copyright & Accreditation Notice */}
-          <div className="mt-8 pt-4 border-t border-sky-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-sky-300 gap-2 uppercase tracking-tight">
+          <div className="mt-8 pt-4 border-t border-sky-700/80 flex flex-col sm:flex-row items-center justify-between text-[11px] text-sky-200 gap-2 uppercase tracking-tight">
             <div>
               © 2026 {t.schoolNameHeader}.
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-sky-200">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+            <div className="flex items-center gap-1.5 text-[11px] text-sky-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-yellow-400" />
               {t.accreditationNote}
             </div>
           </div>

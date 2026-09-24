@@ -36,16 +36,18 @@ export const ParentsHub: React.FC = () => {
   return (
     <div className="space-y-8 pb-12 animate-fadeIn">
       {/* Header Banner */}
-      <div className="bg-sky-800 rounded-lg p-6 sm:p-8 text-white border border-sky-700 shadow-sm relative overflow-hidden">
+      <div className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 rounded-2xl p-6 sm:p-8 text-white border border-sky-400/40 shadow-sm relative overflow-hidden">
+        {/* Ambient sunshine glow */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-yellow-300/15 blur-3xl pointer-events-none" />
         <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-sky-900 text-amber-300 text-xs font-black uppercase tracking-wider border border-sky-600">
-            <Users className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-800/80 text-yellow-300 text-xs font-black uppercase tracking-wider border border-sky-400/50 shadow-xs">
+            <Users className="w-3.5 h-3.5 text-yellow-300" />
             {t.parentsBadge}
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
             {t.parentsHeaderTitle}
           </h2>
-          <p className="text-sky-100 text-xs sm:text-sm max-w-3xl leading-relaxed">
+          <p className="text-sky-100 text-xs sm:text-sm max-w-3xl leading-relaxed font-normal">
             {t.parentsHeaderDesc}
           </p>
         </div>
@@ -55,13 +57,13 @@ export const ParentsHub: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <a
           href="#section-bas"
-          className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-sky-500 hover:shadow-md transition-all group flex items-start gap-4"
+          className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-sky-400 hover:shadow-md transition-all group flex items-start gap-4 cursor-pointer"
         >
-          <div className="w-10 h-10 rounded bg-sky-800 text-amber-300 flex items-center justify-center font-bold shrink-0">
-            <Bus className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-sky-600 text-yellow-300 flex items-center justify-center font-bold shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+            <Bus className="w-5 h-5 text-yellow-300" />
           </div>
           <div>
-            <h3 className="font-black text-sky-900 text-sm uppercase tracking-wide group-hover:text-sky-700">
+            <h3 className="font-black text-sky-900 text-sm uppercase tracking-wide group-hover:text-sky-600 transition-colors">
               {t.parentsNavBusTitle}
             </h3>
             <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -72,13 +74,13 @@ export const ParentsHub: React.FC = () => {
 
         <a
           href="#section-mkpk"
-          className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-sky-500 hover:shadow-md transition-all group flex items-start gap-4"
+          className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-sky-400 hover:shadow-md transition-all group flex items-start gap-4 cursor-pointer"
         >
-          <div className="w-10 h-10 rounded bg-sky-800 text-amber-300 flex items-center justify-center font-bold shrink-0">
-            <Award className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-sky-600 text-yellow-300 flex items-center justify-center font-bold shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+            <Award className="w-5 h-5 text-yellow-300" />
           </div>
           <div>
-            <h3 className="font-black text-sky-900 text-sm uppercase tracking-wide group-hover:text-sky-700">
+            <h3 className="font-black text-sky-900 text-sm uppercase tracking-wide group-hover:text-sky-600 transition-colors">
               {t.parentsNavBdqfTitle}
             </h3>
             <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -89,10 +91,10 @@ export const ParentsHub: React.FC = () => {
       </div>
 
       {/* SECTION 1: LALUAN BAS & PENGANGKUTAN SEKOLAH DAERAH TUTONG */}
-      <div id="section-bas" className="bg-white rounded-lg p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div id="section-bas" className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
-          <div className="w-9 h-9 rounded bg-sky-800 text-amber-300 flex items-center justify-center shadow-sm">
-            <Bus className="w-4 h-4" />
+          <div className="w-9 h-9 rounded-xl bg-sky-600 text-yellow-300 flex items-center justify-center shadow-xs">
+            <Bus className="w-4 h-4 text-yellow-300" />
           </div>
           <div>
             <h3 className="text-base sm:text-lg font-black text-sky-900 uppercase tracking-wide">
@@ -116,7 +118,7 @@ export const ParentsHub: React.FC = () => {
               >
                 <div className="space-y-1.5 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold px-2 py-0.5 bg-sky-800 text-amber-300 rounded">
+                    <span className="font-mono text-xs font-bold px-2 py-0.5 bg-sky-700 text-yellow-300 rounded-md">
                       {route.routeNumber}
                     </span>
                     <span className="text-xs text-slate-500 font-semibold">
@@ -153,10 +155,10 @@ export const ParentsHub: React.FC = () => {
       </div>
 
       {/* SECTION 3: AKREDITASI & RANGKA KERJA BDQF / MKPK */}
-      <div id="section-mkpk" className="bg-white rounded-lg p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div id="section-mkpk" className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
-          <div className="w-9 h-9 rounded bg-sky-800 text-amber-300 flex items-center justify-center shadow-sm">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="w-9 h-9 rounded-xl bg-sky-600 text-yellow-300 flex items-center justify-center shadow-xs">
+            <ShieldCheck className="w-4 h-4 text-yellow-300" />
           </div>
           <div>
             <h3 className="text-base sm:text-lg font-black text-sky-900 uppercase tracking-wide">
@@ -210,11 +212,11 @@ export const ParentsHub: React.FC = () => {
       </div>
 
       {/* SECTION 4: SOALAN LAZIM IBU BAPA (FAQ) */}
-      <div className="bg-white rounded-lg p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded bg-sky-800 text-amber-300 flex items-center justify-center shadow-sm font-bold">
-              <HelpCircle className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-sky-600 text-yellow-300 flex items-center justify-center shadow-xs font-bold">
+              <HelpCircle className="w-4 h-4 text-yellow-300" />
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-black text-sky-900 uppercase tracking-wide">
@@ -233,7 +235,7 @@ export const ParentsHub: React.FC = () => {
               placeholder={t.searchFaqPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-9 px-3 rounded border border-slate-300 text-xs text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-sky-500"
+              className="w-full h-9 px-3 rounded-lg border border-slate-300 text-xs text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-sky-500"
             />
           </div>
         </div>
@@ -249,10 +251,10 @@ export const ParentsHub: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveCategory(tab.id as any)}
-              className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider transition-all border ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border cursor-pointer ${
                 activeCategory === tab.id
-                  ? 'bg-sky-800 text-white border-sky-800 shadow-sm'
-                  : 'bg-slate-100 text-slate-700 border-slate-200 hover:border-sky-300'
+                  ? 'bg-yellow-400 text-sky-950 font-black border-yellow-500 shadow-xs'
+                  : 'bg-slate-100 text-slate-700 border-slate-200 hover:border-sky-300 hover:bg-sky-50'
               }`}
             >
               {lang === 'en' ? tab.labelEn : tab.labelMs}

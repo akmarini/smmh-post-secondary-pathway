@@ -217,17 +217,19 @@ export const PassportView: React.FC<PassportViewProps> = ({
   return (
     <div className="space-y-8 pb-12 animate-fadeIn">
       {/* Header & Controls - Excluded from Print */}
-      <div className="bg-sky-800 rounded-lg p-6 sm:p-8 text-white border border-sky-700 shadow-sm relative overflow-hidden print:hidden print-hidden">
+      <div className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 rounded-2xl p-6 sm:p-8 text-white border border-sky-400/40 shadow-sm relative overflow-hidden print:hidden print-hidden">
+        {/* Ambient sunshine glow */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-yellow-300/15 blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-sky-900 text-amber-300 text-xs font-black uppercase tracking-wider border border-sky-600">
-              <BookOpenCheck className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-800/80 text-yellow-300 text-xs font-black uppercase tracking-wider border border-sky-400/50 shadow-xs">
+              <BookOpenCheck className="w-3.5 h-3.5 text-yellow-300" />
               {t.passportDocBadge}
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
               {t.passportHeaderTitle}
             </h2>
-            <p className="text-sky-100 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            <p className="text-sky-100 text-xs sm:text-sm max-w-2xl leading-relaxed font-normal">
               {t.passportHeaderDesc}
             </p>
           </div>
@@ -237,7 +239,7 @@ export const PassportView: React.FC<PassportViewProps> = ({
               id="download-passport-pdf-btn"
               onClick={handleGeneratePdf}
               disabled={isGeneratingPdf}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-amber-400 hover:bg-amber-300 text-sky-950 font-black text-xs uppercase tracking-wider shadow-sm transition-all border border-amber-500 cursor-pointer disabled:opacity-50"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-sky-950 font-black text-xs uppercase tracking-wider shadow-sm transition-all border border-yellow-500 cursor-pointer disabled:opacity-50"
             >
               <Download className={`w-3.5 h-3.5 text-sky-950 ${isGeneratingPdf ? 'animate-bounce' : ''}`} />
               <span>{isGeneratingPdf ? (lang === 'ms' ? 'Menjana PDF...' : 'Generating PDF...') : (lang === 'ms' ? 'Jana Dokumen PDF (Download)' : 'Download Passport (PDF)')}</span>
@@ -245,9 +247,9 @@ export const PassportView: React.FC<PassportViewProps> = ({
             <button
               id="passport-save-btn"
               onClick={onSaveProgress}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-sky-900 hover:bg-sky-700 text-white font-bold text-xs uppercase tracking-wider border border-sky-600 transition-all cursor-pointer"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-sky-800/90 hover:bg-sky-700 text-white font-bold text-xs uppercase tracking-wider border border-sky-500 transition-all cursor-pointer"
             >
-              <Save className="w-3.5 h-3.5 text-amber-300" />
+              <Save className="w-3.5 h-3.5 text-yellow-300" />
               <span>{t.saveDataBtn}</span>
             </button>
           </div>

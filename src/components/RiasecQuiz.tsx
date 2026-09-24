@@ -125,31 +125,33 @@ export const RiasecQuiz: React.FC<RiasecQuizProps> = ({
   return (
     <div className="space-y-8 pb-12 animate-fadeIn">
       {/* Header Banner */}
-      <div className="bg-sky-800 rounded-lg p-6 sm:p-8 text-white border border-sky-700 shadow-sm relative overflow-hidden">
+      <div className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 rounded-2xl p-6 sm:p-8 text-white border border-sky-400/40 shadow-sm relative overflow-hidden">
+        {/* Ambient sunshine glow */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-yellow-300/15 blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-sky-900 text-amber-300 text-xs font-black uppercase tracking-wider border border-sky-600">
-              <BrainCircuit className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-800/80 text-yellow-300 text-xs font-black uppercase tracking-wider border border-sky-400/50 shadow-xs">
+              <BrainCircuit className="w-3.5 h-3.5 text-yellow-300" />
               {t.riasecModelBadge}
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
               {t.riasecHeaderTitle}
             </h2>
-            <p className="text-sky-100 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            <p className="text-sky-100 text-xs sm:text-sm max-w-2xl leading-relaxed font-normal">
               {t.riasecHeaderDesc}
             </p>
           </div>
 
           {/* Quick Actions & Code Display */}
           <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-3 shrink-0">
-            <div className="bg-sky-950 border border-sky-600 rounded-lg p-4 text-center min-w-[200px] shadow-sm">
-              <div className="text-[10px] font-bold text-sky-300 uppercase tracking-wider">
+            <div className="bg-sky-900/80 backdrop-blur-xs border border-sky-400/40 rounded-xl p-4 text-center min-w-[200px] shadow-sm">
+              <div className="text-[10px] font-bold text-yellow-300 uppercase tracking-wider font-mono">
                 {t.yourRiasecCode}
               </div>
-              <div className="text-3xl sm:text-4xl font-black text-amber-300 font-mono tracking-widest my-1">
+              <div className="text-3xl sm:text-4xl font-black text-yellow-300 font-mono tracking-widest my-1">
                 {isComplete || answeredCount >= 12 ? calculated.code : '---'}
               </div>
-              <div className="text-xs text-sky-200 font-medium">
+              <div className="text-xs text-sky-100 font-medium">
                 {isComplete ? t.completeProfileBadge : `${answeredCount}/24 ${t.questionsAnswered}`}
               </div>
             </div>
@@ -158,15 +160,15 @@ export const RiasecQuiz: React.FC<RiasecQuizProps> = ({
               <button
                 id="save-riasec-btn"
                 onClick={onSaveProgress}
-                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded bg-amber-400 text-sky-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-300 transition-colors border border-amber-500 shadow-sm"
+                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-yellow-400 text-sky-950 font-black text-xs uppercase tracking-wider hover:bg-yellow-300 transition-colors border border-yellow-500 shadow-sm cursor-pointer"
               >
-                <Save className="w-3.5 h-3.5" />
+                <Save className="w-3.5 h-3.5 text-sky-950" />
                 {lang === 'ms' ? 'Simpan' : 'Save'}
               </button>
               <button
                 id="sample-riasec-btn"
                 onClick={handleFillSample}
-                className="px-3 py-1.5 rounded bg-sky-900 text-white hover:bg-sky-700 text-xs font-bold uppercase tracking-wider transition-colors border border-sky-700"
+                className="px-3 py-2 rounded-lg bg-sky-800/90 text-white hover:bg-sky-700 text-xs font-bold uppercase tracking-wider transition-colors border border-sky-500 cursor-pointer"
                 title={lang === 'ms' ? 'Isi contoh jawapan secara automatik untuk ujian pantas' : 'Auto-fill sample answers for quick testing'}
               >
                 {t.sampleQuickFill}
@@ -174,7 +176,7 @@ export const RiasecQuiz: React.FC<RiasecQuizProps> = ({
               <button
                 id="reset-riasec-btn"
                 onClick={handleResetQuiz}
-                className="p-1.5 rounded bg-sky-900 text-sky-200 hover:text-rose-300 hover:bg-rose-950/40 text-xs transition-colors border border-sky-700"
+                className="p-2 rounded-lg bg-sky-800/90 text-sky-200 hover:text-rose-300 hover:bg-rose-950/40 text-xs transition-colors border border-sky-500 cursor-pointer"
                 title={lang === 'ms' ? 'Set Semula Semua Jawapan' : 'Reset All Answers'}
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -184,16 +186,16 @@ export const RiasecQuiz: React.FC<RiasecQuizProps> = ({
         </div>
 
         {/* Global Progress Bar */}
-        <div className="mt-6 pt-4 border-t border-sky-700">
-          <div className="flex justify-between items-center text-xs text-sky-200 mb-1.5 font-bold uppercase tracking-wider">
+        <div className="relative z-10 mt-6 pt-4 border-t border-sky-400/40">
+          <div className="flex justify-between items-center text-xs text-sky-100 mb-1.5 font-bold uppercase tracking-wider">
             <span>
               {t.quizProgress}: {answeredCount} {t.of} {totalQuestions} {t.itemsCompleted}
             </span>
-            <span className="font-mono text-amber-300">{progressPercent}%</span>
+            <span className="font-mono text-yellow-300 font-black">{progressPercent}%</span>
           </div>
-          <div className="w-full h-2.5 bg-sky-950 rounded overflow-hidden border border-sky-700">
+          <div className="w-full h-2.5 bg-sky-900/90 rounded-full overflow-hidden border border-sky-400/40">
             <div
-              className="h-full bg-amber-400 transition-all duration-300"
+              className="h-full bg-yellow-400 transition-all duration-300 rounded-full"
               style={{ width: `${progressPercent}%` }}
             ></div>
           </div>

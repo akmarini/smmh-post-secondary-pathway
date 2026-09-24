@@ -72,8 +72,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       badgeStyle: totalCredits >= 5 
         ? 'bg-emerald-400 text-sky-950 font-black' 
         : totalCredits >= 3 
-        ? 'bg-sky-200 text-sky-950 font-bold' 
-        : 'bg-sky-700 text-sky-100'
+        ? 'bg-yellow-300 text-sky-950 font-bold' 
+        : 'bg-sky-800 text-sky-100'
     },
     {
       id: 'visualPathway',
@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       subLabel: lang === 'ms' ? 'PTET, PB, IBTE & Swasta' : 'Roadmap & Private Colleges',
       icon: <GitBranch className="w-4 h-4" />,
       badge: 'CCCT, LCB, IGS',
-      badgeStyle: 'bg-amber-400 text-sky-950 font-black'
+      badgeStyle: 'bg-yellow-400 text-sky-950 font-black'
     },
     {
       id: 'riasec',
@@ -92,8 +92,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         ? `Kod: ${state?.riasecCode || 'RIASEC'}` 
         : `${riasecAnsweredCount}/24`,
       badgeStyle: isRiasecComplete 
-        ? 'bg-amber-400 text-sky-950 font-black' 
-        : 'bg-sky-700 text-sky-100'
+        ? 'bg-yellow-400 text-sky-950 font-black' 
+        : 'bg-sky-800 text-sky-100'
     },
     {
       id: 'careers',
@@ -104,8 +104,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         ? (lang === 'ms' ? '✓ Terpilih' : '✓ Selected') 
         : 'RBAF & RB',
       badgeStyle: hasCareerSelected 
-        ? 'bg-amber-400 text-sky-950 font-black' 
-        : 'bg-sky-700 text-sky-100'
+        ? 'bg-yellow-400 text-sky-950 font-black' 
+        : 'bg-sky-800 text-sky-100'
     },
     {
       id: 'passport',
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         : (lang === 'ms' ? 'Draf' : 'Draft'),
       badgeStyle: state?.passportCompleted 
         ? 'bg-emerald-400 text-sky-950 font-black' 
-        : 'bg-sky-700 text-sky-100'
+        : 'bg-sky-800 text-sky-100'
     },
     {
       id: 'parentshub',
@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       subLabel: lang === 'ms' ? 'Elaun & Laluan Bas Tutong' : 'Allowances & Tutong Buses',
       icon: <Users className="w-4 h-4" />,
       badge: 'Tutong Hub',
-      badgeStyle: 'bg-sky-700 text-sky-100'
+      badgeStyle: 'bg-sky-800 text-sky-100'
     }
   ];
 
@@ -135,23 +135,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-sky-800 text-white border-b border-sky-700 shadow-md print:hidden print-hidden">
+    <header className="sticky top-0 z-40 bg-sky-600 text-white border-b border-sky-400/40 shadow-md print:hidden print-hidden">
       {/* Top Header Bar */}
-      <div className="bg-sky-950 text-sky-200 text-xs px-4 sm:px-8 py-1.5 flex items-center justify-between border-b border-sky-900 font-mono">
+      <div className="bg-sky-700/95 text-sky-100 text-xs px-4 sm:px-8 py-1.5 flex items-center justify-between border-b border-sky-600 font-mono shadow-xs">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
           <span className="font-bold text-white tracking-wider uppercase">{t.schoolName}</span>
-          <span className="hidden sm:inline text-sky-300">| {t.schoolSubtitle.toUpperCase()}</span>
+          <span className="hidden sm:inline text-sky-200">| {t.schoolSubtitle.toUpperCase()}</span>
         </div>
         <div className="flex items-center gap-3">
           {state.profile.studentName && (
-            <span className="hidden md:inline font-sans text-xs text-amber-300 font-semibold bg-sky-900/80 px-2 py-0.5 rounded border border-sky-700">
+            <span className="hidden md:inline font-sans text-xs text-yellow-300 font-semibold bg-sky-800/90 px-2 py-0.5 rounded border border-sky-600">
               {state.profile.studentName} {state.profile.studentClass ? `(${state.profile.studentClass})` : ''}
             </span>
           )}
           {state.lastSavedAt && (
-            <span className="text-[11px] text-sky-300 flex items-center gap-1">
-              <CheckCheck className="w-3 h-3 text-amber-400" />
+            <span className="text-[11px] text-sky-200 flex items-center gap-1 font-medium">
+              <CheckCheck className="w-3 h-3 text-yellow-400" />
               {t.savedAt} {new Date(state.lastSavedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
             </span>
           )}
@@ -171,13 +171,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-base sm:text-lg font-black tracking-tight text-white uppercase">
-                  Hala Tuju <span className="text-amber-400">Navigator</span>
+                  Hala Tuju <span className="text-yellow-300 drop-shadow-xs font-black">Navigator</span>
                 </h1>
-                <span className="bg-sky-700/80 text-sky-100 text-[9px] font-bold px-1.5 py-0.5 rounded border border-sky-500 uppercase tracking-wider hidden sm:inline-block">
+                <span className="bg-sky-700/90 text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-yellow-400/60 uppercase tracking-wider hidden sm:inline-block shadow-xs">
                   {t.appBadge}
                 </span>
               </div>
-              <p className="text-[11px] text-sky-200 hidden sm:block font-medium">
+              <p className="text-[11px] text-sky-100 hidden sm:block font-medium">
                 {t.tagline}
               </p>
             </div>
@@ -188,19 +188,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Language Selector Toggle */}
             <div 
               id="language-switcher-group"
-              className="flex items-center bg-sky-950 p-0.5 rounded border border-sky-700 shadow-inner"
+              className="flex items-center bg-sky-800/80 p-0.5 rounded-lg border border-sky-400/60 shadow-inner"
               title={t.langToggleTooltip}
             >
-              <div className="px-1.5 py-1 text-sky-300 hidden sm:flex items-center">
-                <Globe className="w-3.5 h-3.5 text-amber-400" />
+              <div className="px-1.5 py-1 text-yellow-300 hidden sm:flex items-center">
+                <Globe className="w-3.5 h-3.5 text-yellow-300" />
               </div>
               <button
                 id="lang-btn-ms"
                 onClick={() => setLang('ms')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all uppercase tracking-wider ${
                   lang === 'ms'
-                    ? 'bg-amber-400 text-sky-950 shadow-sm font-black'
-                    : 'text-white/70 hover:text-white'
+                    ? 'bg-yellow-400 text-sky-950 shadow-sm font-black'
+                    : 'text-white/80 hover:text-white cursor-pointer'
                 }`}
                 aria-pressed={lang === 'ms'}
               >
@@ -211,8 +211,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setLang('en')}
                 className={`px-2.5 py-1 rounded text-xs font-bold transition-all uppercase tracking-wider ${
                   lang === 'en'
-                    ? 'bg-amber-400 text-sky-950 shadow-sm font-black'
-                    : 'text-white/70 hover:text-white'
+                    ? 'bg-yellow-400 text-sky-950 shadow-sm font-black'
+                    : 'text-white/80 hover:text-white cursor-pointer'
                 }`}
                 aria-pressed={lang === 'en'}
               >
@@ -225,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="header-save-progress-btn"
               onClick={onSaveProgress}
               disabled={isSaving}
-              className="flex items-center gap-2 bg-amber-400 text-sky-950 px-3.5 sm:px-4 py-1.5 rounded font-bold text-xs uppercase tracking-wider hover:bg-amber-300 transition-colors border border-amber-500 shadow-sm"
+              className="flex items-center gap-2 bg-yellow-400 text-sky-950 px-3.5 sm:px-4 py-1.5 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-yellow-300 transition-colors border border-yellow-300 shadow-sm cursor-pointer"
               title={t.saveProgress}
             >
               <Save className={`w-3.5 h-3.5 text-sky-950 ${isSaving ? 'animate-spin' : ''}`} />
@@ -237,7 +237,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="mobile-nav-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded bg-sky-700 text-white hover:bg-sky-600 transition-colors border border-sky-600"
+              className="lg:hidden p-2 rounded-lg bg-sky-700 text-white hover:bg-sky-600 transition-colors border border-sky-500 cursor-pointer"
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -247,7 +247,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Unified Dashboard Guidance Tabs Bar (Scrollable & Fully Responsive) */}
-      <div className="bg-sky-900/95 border-t border-sky-700/80 px-2 sm:px-6 shadow-inner">
+      <div className="bg-sky-700/95 backdrop-blur-md border-t border-sky-500/50 px-2 sm:px-6 shadow-inner">
         <div className="max-w-7xl mx-auto relative">
           <nav 
             className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-2 scrollbar-none select-none"
@@ -260,33 +260,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={item.id}
                   id={`dashboard-top-tab-${item.id}`}
                   onClick={() => handleTabClick(item.id)}
-                  className={`shrink-0 py-2 px-3 sm:px-3.5 rounded-md flex items-center gap-2.5 transition-all text-left border ${
+                  className={`shrink-0 py-2 px-3 sm:px-3.5 rounded-lg flex items-center gap-2.5 transition-all text-left border cursor-pointer ${
                     isActive
-                      ? 'bg-sky-800 text-white border-amber-400 shadow-md ring-1 ring-amber-400/40'
-                      : 'bg-sky-950/40 border-sky-800/80 text-sky-100 hover:bg-sky-800 hover:text-white'
+                      ? 'bg-white text-sky-950 border-yellow-400 shadow-md ring-2 ring-yellow-400/70'
+                      : 'bg-sky-800/50 border-sky-600/60 text-sky-50 hover:bg-sky-600 hover:text-white'
                   }`}
                 >
-                  <div className={`p-1.5 rounded transition-colors ${
+                  <div className={`p-1.5 rounded-md transition-colors ${
                     isActive 
-                      ? 'bg-amber-400 text-sky-950' 
-                      : 'bg-sky-800/80 text-sky-200'
+                      ? 'bg-yellow-400 text-sky-950 shadow-xs' 
+                      : 'bg-sky-800 text-sky-200'
                   }`}>
                     {item.icon}
                   </div>
                   
                   <div className="min-w-0">
                     <div className="text-xs font-bold uppercase tracking-wider whitespace-nowrap flex items-center gap-1.5">
-                      <span className={isActive ? 'text-amber-300 font-black' : 'text-white'}>
+                      <span className={isActive ? 'text-sky-950 font-black' : 'text-white'}>
                         {item.label}
                       </span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block animate-pulse"></span>}
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block animate-pulse"></span>}
                     </div>
-                    <div className="text-[10px] text-sky-300 whitespace-nowrap hidden sm:block">
+                    <div className={`text-[10px] whitespace-nowrap hidden sm:block ${isActive ? 'text-sky-700 font-semibold' : 'text-sky-200'}`}>
                       {item.subLabel}
                     </div>
                   </div>
 
-                  <span className={`text-[10px] px-2 py-0.5 rounded shrink-0 shadow-xs font-mono ${item.badgeStyle}`}>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full shrink-0 shadow-xs font-mono ${item.badgeStyle}`}>
                     {item.badge}
                   </span>
                 </button>
@@ -298,19 +298,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-sky-950 border-t border-sky-800 px-4 pt-3 pb-5 space-y-2">
+        <div className="lg:hidden bg-sky-800 border-t border-sky-600 px-4 pt-3 pb-5 space-y-2">
           {/* Mobile Language Switcher row */}
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-sky-850">
-            <span className="text-xs text-sky-200 font-bold uppercase flex items-center gap-1.5">
-              <Globe className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-sky-700">
+            <span className="text-xs text-sky-100 font-bold uppercase flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-yellow-300" />
               {t.language}
             </span>
-            <div className="flex items-center bg-sky-900 p-0.5 rounded border border-sky-700">
+            <div className="flex items-center bg-sky-900 p-0.5 rounded-lg border border-sky-600">
               <button
                 id="mobile-lang-btn-ms"
                 onClick={() => setLang('ms')}
                 className={`px-3 py-1 rounded text-xs font-bold uppercase ${
-                  lang === 'ms' ? 'bg-amber-400 text-sky-950 font-black' : 'text-white/70'
+                  lang === 'ms' ? 'bg-yellow-400 text-sky-950 font-black shadow-xs' : 'text-white/80'
                 }`}
               >
                 Bahasa Melayu
@@ -319,7 +319,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id="mobile-lang-btn-en"
                 onClick={() => setLang('en')}
                 className={`px-3 py-1 rounded text-xs font-bold uppercase ${
-                  lang === 'en' ? 'bg-amber-400 text-sky-950 font-black' : 'text-white/70'
+                  lang === 'en' ? 'bg-yellow-400 text-sky-950 font-black shadow-xs' : 'text-white/80'
                 }`}
               >
                 English
@@ -334,23 +334,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={item.id}
                 id={`mobile-tab-${item.id}`}
                 onClick={() => handleTabClick(item.id)}
-                className={`w-full flex items-center justify-between p-3 rounded text-left transition-all border ${
+                className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-all border cursor-pointer ${
                   isActive
-                    ? 'bg-sky-800 text-white border-amber-400 shadow-sm font-bold'
-                    : 'bg-sky-900/60 text-sky-100 border-sky-800 hover:bg-sky-800'
+                    ? 'bg-white text-sky-950 border-yellow-400 shadow-sm font-black'
+                    : 'bg-sky-900/60 text-sky-100 border-sky-700 hover:bg-sky-700'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded ${isActive ? 'bg-amber-400 text-sky-950' : 'bg-sky-800 text-sky-200'}`}>
+                  <div className={`p-2 rounded-md ${isActive ? 'bg-yellow-400 text-sky-950' : 'bg-sky-700 text-sky-200'}`}>
                     {item.icon}
                   </div>
                   <div>
                     <div className="text-xs font-bold uppercase tracking-wider">{item.label}</div>
-                    <div className="text-[10px] text-sky-300">{item.subLabel}</div>
+                    <div className={`text-[10px] ${isActive ? 'text-sky-700 font-semibold' : 'text-sky-200'}`}>{item.subLabel}</div>
                   </div>
                 </div>
 
-                <span className={`text-[10px] px-2 py-0.5 rounded ${item.badgeStyle}`}>
+                <span className={`text-[10px] px-2 py-0.5 rounded-full ${item.badgeStyle}`}>
                   {item.badge}
                 </span>
               </button>

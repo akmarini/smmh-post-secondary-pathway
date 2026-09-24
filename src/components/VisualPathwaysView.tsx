@@ -233,17 +233,19 @@ export const VisualPathwaysView: React.FC<VisualPathwaysViewProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Top Banner & Header */}
-      <div className="bg-gradient-to-r from-sky-950 via-sky-900 to-slate-900 text-white rounded-lg p-6 sm:p-8 border border-sky-800 shadow-md">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white rounded-2xl p-6 sm:p-8 border border-sky-400/40 shadow-sm relative overflow-hidden">
+        {/* Ambient sunshine glow */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-yellow-300/15 blur-3xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-sky-800/90 text-amber-300 text-xs font-bold uppercase tracking-wider border border-sky-600">
-              <Compass className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-800/80 text-yellow-300 text-xs font-bold uppercase tracking-wider border border-sky-400/50 shadow-xs">
+              <Compass className="w-3.5 h-3.5 text-yellow-300" />
               <span>{lang === 'ms' ? 'Peta Visual Hala Tuju & Panduan Institusi Swasta' : 'Visual Pathway Map & Private Institutions Guide'}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight uppercase">
               {lang === 'ms' ? 'Peta Visual Hala Tuju Pendidikan & Kerjaya' : 'Visual Post-O Level Education & Career Pathways'}
             </h2>
-            <p className="text-xs sm:text-sm text-sky-200 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-sky-100 max-w-3xl leading-relaxed font-normal">
               {lang === 'ms'
                 ? 'Panduan interaktif menyeluruh mengenai cabang laluan lepasan O-Level di Brunei Darussalam: Pusat Tingkatan Enam (PTET), Politeknik Brunei, IBTE, dan program Foundation serta Diploma yang ditawarkan oleh institusi pengajian tinggi swasta (CCCT, Micronet, LCB, Kolej IGS).'
                 : 'A comprehensive interactive roadmap detailing post-O Level pathways in Brunei Darussalam: Sixth Form Centres (PTET), Politeknik Brunei, IBTE, and Foundation & Diploma programmes offered by accredited private colleges (CCCT, Micronet, LCB, Kolej IGS).'}
@@ -251,31 +253,31 @@ export const VisualPathwaysView: React.FC<VisualPathwaysViewProps> = ({
           </div>
 
           {/* Student Quick Status Pill */}
-          <div className="bg-sky-900/90 p-4 rounded-lg border border-sky-700 shrink-0 text-center lg:text-right space-y-1">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-sky-300">
+          <div className="bg-sky-900/80 backdrop-blur-xs p-4 rounded-xl border border-sky-400/40 shrink-0 text-center lg:text-right space-y-1 shadow-sm">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-yellow-300">
               {lang === 'ms' ? 'Status Keputusan Anda' : 'Your Results Status'}
             </div>
-            <div className="text-2xl font-black text-amber-400">
+            <div className="text-2xl font-black text-yellow-300">
               {totalCredits} <span className="text-xs font-bold text-white uppercase">{lang === 'ms' ? 'Kredit O-Level' : 'O-Level Credits'}</span>
             </div>
-            <div className="text-[11px] text-sky-200 flex items-center justify-center lg:justify-end gap-2">
-              <span>BM: <strong className={hasBmCredit ? 'text-emerald-300' : 'text-slate-300'}>{bmGrade || '-'}</strong></span>
+            <div className="text-[11px] text-sky-100 flex items-center justify-center lg:justify-end gap-2 font-medium">
+              <span>BM: <strong className={hasBmCredit ? 'text-yellow-300' : 'text-slate-300'}>{bmGrade || '-'}</strong></span>
               <span>•</span>
-              <span>Eng: <strong className={hasEngCredit ? 'text-emerald-300' : 'text-slate-300'}>{engGrade || '-'}</strong></span>
+              <span>Eng: <strong className={hasEngCredit ? 'text-yellow-300' : 'text-slate-300'}>{engGrade || '-'}</strong></span>
               <span>•</span>
-              <span>Math: <strong className={hasMathCredit ? 'text-emerald-300' : 'text-slate-300'}>{mathGrade || '-'}</strong></span>
+              <span>Math: <strong className={hasMathCredit ? 'text-yellow-300' : 'text-slate-300'}>{mathGrade || '-'}</strong></span>
             </div>
           </div>
         </div>
 
         {/* Sub-Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-sky-800/80">
+        <div className="relative z-10 flex flex-wrap gap-2 mt-6 pt-5 border-t border-sky-400/40">
           <button
             onClick={() => setActiveMainTab('roadmap')}
-            className={`px-4 py-2.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all ${
+            className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
               activeMainTab === 'roadmap'
-                ? 'bg-amber-400 text-sky-950 font-black shadow-sm'
-                : 'bg-sky-900/60 text-white hover:bg-sky-800'
+                ? 'bg-yellow-400 text-sky-950 font-black shadow-sm ring-2 ring-yellow-400/70'
+                : 'bg-sky-800/80 text-white hover:bg-sky-700/90'
             }`}
           >
             <GitBranch className="w-4 h-4" />
@@ -284,25 +286,27 @@ export const VisualPathwaysView: React.FC<VisualPathwaysViewProps> = ({
 
           <button
             onClick={() => setActiveMainTab('private_colleges')}
-            className={`px-4 py-2.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all ${
+            className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
               activeMainTab === 'private_colleges'
-                ? 'bg-amber-400 text-sky-950 font-black shadow-sm'
-                : 'bg-sky-900/60 text-white hover:bg-sky-800'
+                ? 'bg-yellow-400 text-sky-950 font-black shadow-sm ring-2 ring-yellow-400/70'
+                : 'bg-sky-800/80 text-white hover:bg-sky-700/90'
             }`}
           >
             <Building2 className="w-4 h-4" />
             <span>{lang === 'ms' ? '2. Institusi Swasta: Foundation & Diploma' : '2. Private Colleges: Foundation & Diploma'}</span>
-            <span className="bg-sky-700 text-sky-100 text-[10px] px-1.5 py-0.2 rounded font-mono">
+            <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
+              activeMainTab === 'private_colleges' ? 'bg-sky-900 text-yellow-300' : 'bg-sky-700 text-white'
+            }`}>
               CCCT, LCB, Micronet, IGS
             </span>
           </button>
 
           <button
             onClick={() => setActiveMainTab('comparison')}
-            className={`px-4 py-2.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all ${
+            className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
               activeMainTab === 'comparison'
-                ? 'bg-amber-400 text-sky-950 font-black shadow-sm'
-                : 'bg-sky-900/60 text-white hover:bg-sky-800'
+                ? 'bg-yellow-400 text-sky-950 font-black shadow-sm ring-2 ring-yellow-400/70'
+                : 'bg-sky-800/80 text-white hover:bg-sky-700/90'
             }`}
           >
             <Layers className="w-4 h-4" />

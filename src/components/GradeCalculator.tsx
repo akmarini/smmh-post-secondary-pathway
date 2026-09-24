@@ -248,45 +248,47 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header Banner */}
-      <div className="bg-sky-800 text-white p-6 sm:p-8 rounded-lg shadow-sm border border-sky-700">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white p-6 sm:p-8 rounded-2xl shadow-sm border border-sky-400/40 relative overflow-hidden">
+        {/* Ambient sunshine glow */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-yellow-300/15 blur-3xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-sky-900 text-amber-300 text-xs font-bold uppercase tracking-wider border border-sky-600">
-              <Compass className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sky-800/80 text-yellow-300 text-xs font-bold uppercase tracking-wider border border-sky-400/50 shadow-xs">
+              <Compass className="w-3.5 h-3.5 text-yellow-300" />
               <span>{lang === 'ms' ? 'Panduan & Kalkulator Kelayakan Lepasan Menengah Brunei' : 'Brunei Post-Secondary Pathways Guide & Calculator'}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight uppercase">
               {t.calcHeaderTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-sky-100 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-sky-100 max-w-3xl leading-relaxed font-normal">
               {t.calcHeaderDesc}
             </p>
           </div>
 
           {/* Quick Preset Buttons for rapid testing */}
-          <div className="bg-sky-950 p-4 rounded-lg border border-sky-700 shrink-0">
-            <span className="text-[11px] font-bold text-sky-300 uppercase tracking-wider block mb-2 font-mono">
+          <div className="bg-sky-900/80 backdrop-blur-xs p-4 rounded-xl border border-sky-400/40 shrink-0 shadow-sm">
+            <span className="text-[11px] font-bold text-yellow-300 uppercase tracking-wider block mb-2 font-mono">
               {t.quickSamples}
             </span>
             <div className="flex flex-col gap-1.5">
               <button
                 id="sample-btn-ptet"
                 onClick={() => handleLoadSampleGrades('ptet')}
-                className="text-left px-3 py-1.5 rounded bg-sky-900 hover:bg-amber-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-700 uppercase"
+                className="text-left px-3 py-1.5 rounded-lg bg-sky-800/90 hover:bg-yellow-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-600 hover:border-yellow-400 uppercase cursor-pointer"
               >
                 ★ {t.samplePtet}
               </button>
               <button
                 id="sample-btn-pb"
                 onClick={() => handleLoadSampleGrades('pb')}
-                className="text-left px-3 py-1.5 rounded bg-sky-900 hover:bg-amber-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-700 uppercase"
+                className="text-left px-3 py-1.5 rounded-lg bg-sky-800/90 hover:bg-yellow-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-600 hover:border-yellow-400 uppercase cursor-pointer"
               >
                 ★ {t.samplePb}
               </button>
               <button
                 id="sample-btn-ibte"
                 onClick={() => handleLoadSampleGrades('ibte')}
-                className="text-left px-3 py-1.5 rounded bg-sky-900 hover:bg-amber-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-700 uppercase"
+                className="text-left px-3 py-1.5 rounded-lg bg-sky-800/90 hover:bg-yellow-400 hover:text-sky-950 text-xs text-white font-bold transition-all border border-sky-600 hover:border-yellow-400 uppercase cursor-pointer"
               >
                 ★ {t.sampleHntec}
               </button>
@@ -419,7 +421,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
             <button
               id="reset-all-grades-btn"
               onClick={handleResetGrades}
-              className="px-3 py-1.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-slate-300"
+              className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-slate-300 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>{t.resetGradesBtn}</span>
@@ -427,7 +429,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
             <button
               id="save-grades-shortcut-btn"
               onClick={onSaveProgress}
-              className="px-3.5 py-1.5 rounded bg-amber-400 hover:bg-amber-300 text-sky-950 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-amber-500 shadow-sm"
+              className="px-3.5 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-sky-950 text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors border border-yellow-500 shadow-sm cursor-pointer"
             >
               <Save className="w-3.5 h-3.5" />
               <span>{t.saveGradesBtn}</span>
@@ -439,7 +441,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-sky-800 text-white uppercase text-[11px] tracking-wider border border-sky-800">
+              <tr className="bg-gradient-to-r from-sky-600 via-sky-600 to-sky-700 text-white uppercase text-[11px] tracking-wider border border-sky-600">
                 <th className="py-3 px-4 font-bold w-12">#</th>
                 <th className="py-3 px-4 font-bold">{t.subjectCol}</th>
                 <th className="py-3 px-4 font-bold w-28">{t.typeCol}</th>
@@ -574,9 +576,9 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
             id="add-elective-btn"
             onClick={handleAddElective}
             disabled={!selectedElectiveToAdd}
-            className="w-full sm:w-auto mt-auto h-9 px-4 rounded bg-sky-700 text-white hover:bg-sky-800 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 disabled:opacity-40 transition-all border border-sky-700 shadow-sm"
+            className="w-full sm:w-auto mt-auto h-9 px-4 rounded-lg bg-sky-600 text-white hover:bg-sky-500 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 disabled:opacity-40 transition-all border border-sky-500 shadow-sm cursor-pointer"
           >
-            <Plus className="w-3.5 h-3.5 text-amber-300" />
+            <Plus className="w-3.5 h-3.5 text-yellow-300" />
             <span>{t.addElectiveBtn}</span>
           </button>
         </div>
@@ -586,11 +588,11 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           <button
             id="generate-pathway-btn"
             onClick={() => triggerCalculation()}
-            className="w-full max-w-md py-3.5 px-6 rounded-md bg-sky-800 text-white hover:bg-sky-700 font-bold text-sm uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 border-b-4 border-amber-400"
+            className="w-full max-w-md py-3.5 px-6 rounded-xl bg-gradient-to-r from-sky-600 via-sky-500 to-sky-600 text-white hover:from-sky-500 hover:to-sky-400 font-black text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 border-b-4 border-yellow-400 cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-amber-300" />
+            <Sparkles className="w-4 h-4 text-yellow-300" />
             <span>{lang === 'ms' ? 'JANA HALA TUJU SAYA' : 'EVALUATE MY PATHWAYS'}</span>
-            <ArrowRight className="w-4 h-4 text-amber-300" />
+            <ArrowRight className="w-4 h-4 text-yellow-300" />
           </button>
           <p className="text-xs text-slate-500">
             {lang === 'ms'
@@ -604,7 +606,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
       <div id="pathway-results-container" className="space-y-6">
         {/* Floating Realtime Selection Feedback */}
         {selectedFeedbackMessage && (
-          <div className="bg-amber-400 text-sky-950 px-4 py-3 rounded-lg border-2 border-amber-500 shadow-lg flex items-center justify-between gap-3 animate-bounce">
+          <div className="bg-yellow-400 text-sky-950 px-4 py-3 rounded-xl border-2 border-yellow-500 shadow-lg flex items-center justify-between gap-3 animate-bounce">
             <div className="flex items-center gap-2 font-bold text-xs sm:text-sm">
               <Check className="w-5 h-5 text-sky-950 stroke-[3]" />
               <span>
@@ -615,7 +617,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
             </div>
             <button
               onClick={goToPassport}
-              className="px-3 py-1 bg-sky-950 text-amber-300 hover:bg-sky-900 rounded font-black text-xs uppercase tracking-wider shrink-0"
+              className="px-3 py-1 bg-sky-950 text-yellow-300 hover:bg-sky-900 rounded-lg font-black text-xs uppercase tracking-wider shrink-0 cursor-pointer"
             >
               {lang === 'ms' ? 'Buka Pasport' : 'Open Passport'} →
             </button>
@@ -623,18 +625,18 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
         )}
 
         {/* Active Selection Summary Banner */}
-        <div className="bg-gradient-to-r from-sky-950 via-sky-900 to-slate-900 rounded-lg p-5 text-white border border-sky-700 shadow-md">
+        <div className="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 rounded-2xl p-5 text-white border border-sky-400/40 shadow-md">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1.5 flex-1">
               <div className="flex items-center gap-2">
-                <BookmarkCheck className="w-4 h-4 text-amber-300" />
-                <h4 className="text-xs font-black uppercase tracking-wider text-amber-300">
+                <BookmarkCheck className="w-4 h-4 text-yellow-300" />
+                <h4 className="text-xs font-black uppercase tracking-wider text-yellow-300">
                   {lang === 'ms' ? 'Status Pilihan Hala Tuju SMMH Anda' : 'Your SMMH Pathway Selections'}
                 </h4>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div className="bg-white/10 rounded p-2.5 border border-white/15">
-                  <div className="text-[10px] uppercase font-bold text-amber-300 flex items-center justify-between">
+                <div className="bg-white/10 rounded-lg p-2.5 border border-white/20">
+                  <div className="text-[10px] uppercase font-bold text-yellow-300 flex items-center justify-between">
                     <span>⭐ {lang === 'ms' ? 'Pilihan 1 (Keutamaan 1)' : '1st Choice (Priority 1)'}</span>
                     {state.firstChoicePathway && (
                       <button 
@@ -679,7 +681,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
               <button
                 id="calc-summary-view-passport-btn"
                 onClick={goToPassport}
-                className="px-4 py-2.5 rounded bg-amber-400 hover:bg-amber-300 text-sky-950 font-black text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 border border-amber-500"
+                className="px-4 py-2.5 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-sky-950 font-black text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5 border border-yellow-500 cursor-pointer"
               >
                 <span>{lang === 'ms' ? 'Lihat di Pasport' : 'View in Passport'}</span>
                 <ArrowRight className="w-3.5 h-3.5 text-sky-950" />
@@ -688,10 +690,10 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-lg border border-slate-200 shadow-sm">
-          <div className="border-l-4 border-sky-600 pl-3">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-              <School className="w-3.5 h-3.5 text-sky-600" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-xl border border-sky-100 shadow-sm">
+          <div className="border-l-4 border-sky-500 pl-3">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-sky-600">
+              <School className="w-3.5 h-3.5 text-sky-500" />
               {lang === 'ms' ? 'Hasil Pemadanan Kelayakan Lepasan Menengah' : 'Post-Secondary Admission Pathway Results'}
             </div>
             <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase">
@@ -700,11 +702,11 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           </div>
 
           {/* Filter Status Buttons */}
-          <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded border border-slate-300">
+          <div className="flex items-center gap-1.5 bg-sky-50 p-1 rounded-lg border border-sky-200">
             <button
               onClick={() => setSelectedPathwayFilter('all')}
-              className={`px-3 py-1.5 rounded text-xs uppercase font-bold tracking-wider transition-all ${
-                selectedPathwayFilter === 'all' ? 'bg-sky-700 text-white' : 'text-slate-600 hover:text-slate-900'
+              className={`px-3 py-1.5 rounded-md text-xs uppercase font-bold tracking-wider transition-all cursor-pointer ${
+                selectedPathwayFilter === 'all' ? 'bg-sky-600 text-white shadow-xs font-black' : 'text-sky-800 hover:text-sky-950'
               }`}
             >
               {t.filterAll} ({pathways.length})
@@ -750,15 +752,15 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
               <div
                 key={pathway.id}
                 id={`pathway-card-${pathway.id}`}
-                className={`bg-white rounded-lg p-6 border-2 transition-all shadow-sm relative ${
+                className={`bg-white rounded-xl p-6 border-2 transition-all shadow-sm relative ${
                   isFirstChoice
-                    ? 'border-amber-500 ring-2 ring-amber-400/40 border-l-8 border-l-amber-500 bg-amber-50/10'
+                    ? 'border-yellow-400 ring-2 ring-yellow-400/50 border-l-8 border-l-yellow-400 bg-yellow-50/20'
                     : isSecondChoice
-                    ? 'border-sky-700 ring-2 ring-sky-400/30 border-l-8 border-l-sky-700 bg-sky-50/10'
+                    ? 'border-sky-600 ring-2 ring-sky-400/40 border-l-8 border-l-sky-600 bg-sky-50/20'
                     : isEligible
-                    ? 'border-sky-600 border-l-8 border-l-sky-600'
+                    ? 'border-sky-500 border-l-8 border-l-sky-500'
                     : isConditional
-                    ? 'border-amber-400 border-l-8 border-l-amber-500'
+                    ? 'border-yellow-400 border-l-8 border-l-yellow-500'
                     : 'border-slate-200 opacity-80'
                 }`}
               >
@@ -768,24 +770,24 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                   <div className="space-y-3 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       {isFirstChoice && (
-                        <span className="px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-amber-400 text-sky-950 border border-amber-500 shadow-sm flex items-center gap-1">
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-yellow-400 text-sky-950 border border-yellow-500 shadow-xs flex items-center gap-1">
                           <Star className="w-3 h-3 fill-sky-950 text-sky-950" />
                           <span>{lang === 'ms' ? 'PILIHAN 1 ANDA' : 'YOUR 1ST CHOICE'}</span>
                         </span>
                       )}
                       {isSecondChoice && (
-                        <span className="px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-sky-800 text-white border border-sky-900 shadow-sm flex items-center gap-1">
-                          <Target className="w-3 h-3 text-amber-300" />
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-sky-700 text-white border border-sky-800 shadow-xs flex items-center gap-1">
+                          <Target className="w-3 h-3 text-yellow-300" />
                           <span>{lang === 'ms' ? 'PILIHAN 2 ANDA' : 'YOUR 2ND CHOICE'}</span>
                         </span>
                       )}
-                      <span className={`px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider border ${pathway.statusColor}`}>
+                      <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border ${pathway.statusColor}`}>
                         {statusLabel}
                       </span>
-                      <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-300 uppercase tracking-wider">
+                      <span className="text-[11px] font-bold text-sky-800 bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200 uppercase tracking-wider">
                         {displayLevel}
                       </span>
-                      <span className="text-[11px] font-medium text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                      <span className="text-[11px] font-medium text-slate-600 bg-slate-50 px-2 py-0.5 rounded-full border border-slate-200">
                         {t.durationLabel}: {displayDuration}
                       </span>
                     </div>
@@ -795,7 +797,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                     </h4>
 
                     {/* Specific analysis reason */}
-                    <div className={`p-3 rounded border text-xs leading-relaxed ${
+                    <div className={`p-3 rounded-lg border text-xs leading-relaxed ${
                       isEligible
                         ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
                         : isConditional
@@ -808,14 +810,14 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                     {/* Campus Location & Prerequisites */}
                     <div className={`grid gap-3 pt-1 text-xs ${displayCampus ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
                       {displayCampus ? (
-                        <div className="bg-sky-50/40 p-3 rounded border border-sky-100">
-                          <span className="font-bold text-slate-900 uppercase tracking-wider block mb-1 text-[11px]">📍 {t.campusLabel}:</span>
+                        <div className="bg-sky-50/50 p-3 rounded-lg border border-sky-100">
+                          <span className="font-bold text-sky-950 uppercase tracking-wider block mb-1 text-[11px]">📍 {t.campusLabel}:</span>
                           <p className="text-slate-700">{displayCampus}</p>
                         </div>
                       ) : null}
 
-                      <div className="bg-sky-50/40 p-3 rounded border border-sky-100">
-                        <span className="font-bold text-slate-900 uppercase tracking-wider block mb-1 text-[11px]">📋 {t.prereqTitle}</span>
+                      <div className="bg-sky-50/50 p-3 rounded-lg border border-sky-100">
+                        <span className="font-bold text-sky-950 uppercase tracking-wider block mb-1 text-[11px]">📋 {t.prereqTitle}</span>
                         <ul className="space-y-0.5 text-slate-700 list-disc list-inside">
                           {displayPrereqs.map((req, i) => (
                             <li key={i}>{req}</li>
@@ -831,8 +833,8 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                       </span>
                       <div className="space-y-1">
                         {displayCourses.map((crs, i) => (
-                          <div key={i} className="text-xs bg-slate-50 text-slate-800 p-2 rounded border border-slate-200 flex items-start gap-1.5">
-                            <span className="text-sky-700 font-bold">•</span>
+                          <div key={i} className="text-xs bg-slate-50 text-slate-800 p-2 rounded-lg border border-slate-200 flex items-start gap-1.5">
+                            <span className="text-sky-600 font-bold">•</span>
                             <span>{crs}</span>
                           </div>
                         ))}
@@ -843,11 +845,11 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                   {/* Right Action column */}
                   <div className="lg:w-60 shrink-0 flex flex-col justify-between space-y-4 pt-4 lg:pt-0 lg:border-l lg:border-slate-200 lg:pl-5">
                     {displayPortal ? (
-                      <div className="bg-sky-50/60 p-3 rounded border border-sky-200 text-center space-y-1">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                      <div className="bg-sky-50 p-3 rounded-lg border border-sky-200 text-center space-y-1">
+                        <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wider block">
                           {t.portalLabel}
                         </span>
-                        <div className="text-xs font-bold text-sky-800">
+                        <div className="text-xs font-bold text-sky-900">
                           {displayPortal}
                         </div>
                       </div>
@@ -855,7 +857,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
 
                     <div className="space-y-2">
                       {pathway.status === 'not_eligible' && (
-                        <div className="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-1 rounded border border-rose-200 text-center flex items-center justify-center gap-1">
+                        <div className="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-1 rounded-md border border-rose-200 text-center flex items-center justify-center gap-1">
                           <AlertCircle className="w-3 h-3 text-rose-600 shrink-0" />
                           <span>{lang === 'ms' ? 'Syarat kelayakan belum dicapai' : 'Requirements not yet met'}</span>
                         </div>
@@ -866,12 +868,12 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                         onClick={() => handleSelectFirstChoice(pathway)}
                         disabled={pathway.status === 'not_eligible'}
                         title={pathway.status === 'not_eligible' ? (lang === 'ms' ? 'Tidak layak memohon (Syarat kelayakan belum dicapai)' : 'Not eligible to apply (Requirements not yet met)') : ''}
-                        className={`w-full py-2.5 px-3 rounded font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm border ${
+                        className={`w-full py-2.5 px-3 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm border cursor-pointer ${
                           pathway.status === 'not_eligible'
                             ? 'opacity-40 cursor-not-allowed bg-slate-200 text-slate-500 border-slate-300 shadow-none'
                             : isFirstChoice
-                            ? 'bg-amber-400 hover:bg-amber-500 text-sky-950 border-amber-500 ring-2 ring-amber-300 font-black cursor-pointer'
-                            : 'bg-sky-700 hover:bg-sky-800 text-white border-sky-700 cursor-pointer'
+                            ? 'bg-yellow-400 hover:bg-yellow-500 text-sky-950 border-yellow-500 ring-2 ring-yellow-300 font-black'
+                            : 'bg-sky-600 hover:bg-sky-700 text-white border-sky-600'
                         }`}
                       >
                         {pathway.status === 'not_eligible' ? (
@@ -886,7 +888,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                           </>
                         ) : (
                           <>
-                            <Star className="w-3.5 h-3.5 text-amber-300" />
+                            <Star className="w-3.5 h-3.5 text-yellow-300" />
                             <span>{t.selectAsFirstChoice}</span>
                           </>
                         )}
@@ -897,12 +899,12 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                         onClick={() => handleSelectSecondChoice(pathway)}
                         disabled={pathway.status === 'not_eligible'}
                         title={pathway.status === 'not_eligible' ? (lang === 'ms' ? 'Tidak layak memohon (Syarat kelayakan belum dicapai)' : 'Not eligible to apply (Requirements not yet met)') : ''}
-                        className={`w-full py-2.5 px-3 rounded font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border ${
+                        className={`w-full py-2.5 px-3 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border cursor-pointer ${
                           pathway.status === 'not_eligible'
                             ? 'opacity-40 cursor-not-allowed bg-slate-200 text-slate-500 border-slate-300 shadow-none'
                             : isSecondChoice
-                            ? 'bg-sky-900 hover:bg-sky-950 text-white border-sky-900 ring-2 ring-sky-400 font-black cursor-pointer'
-                            : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300 cursor-pointer'
+                            ? 'bg-sky-800 hover:bg-sky-900 text-white border-sky-800 ring-2 ring-sky-400 font-black'
+                            : 'bg-sky-50 hover:bg-sky-100 text-sky-950 border-sky-200'
                         }`}
                       >
                         {pathway.status === 'not_eligible' ? (
@@ -912,12 +914,12 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                           </>
                         ) : isSecondChoice ? (
                           <>
-                            <Check className="w-4 h-4 text-amber-300 stroke-[3]" />
+                            <Check className="w-4 h-4 text-yellow-300 stroke-[3]" />
                             <span>{lang === 'ms' ? '✓ Pilihan 2 Dipilih' : '✓ 2nd Choice Selected'}</span>
                           </>
                         ) : (
                           <>
-                            <Target className="w-3.5 h-3.5 text-slate-600" />
+                            <Target className="w-3.5 h-3.5 text-sky-700" />
                             <span>{t.selectAsSecondChoice}</span>
                           </>
                         )}
