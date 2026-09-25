@@ -2,9 +2,27 @@ import { SubjectGrade, PathwayOption } from '../types';
 
 export const O_LEVEL_GRADES = ['A1', 'A2', 'B3', 'B4', 'C5', 'C6', 'D7', 'E8', 'U9'];
 
+// Cambridge IGCSE Letter Grades (A to U - no A*, no numerical suffix)
+export const IGCSE_GRADES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'U'];
+
+export const ALL_GRADES = [
+  ...O_LEVEL_GRADES,
+  ...IGCSE_GRADES
+];
+
+export const ENGLISH_SUBJECT_OPTIONS = [
+  'IGCSE English as a Second Language (count-in Oral) (0511)',
+  'English Language (1123)'
+];
+
+export const MATHEMATICS_SUBJECT_OPTIONS = [
+  'Mathematics D (4024)',
+  'IGCSE Mathematics (0580)'
+];
+
 export const DEFAULT_SUBJECTS: SubjectGrade[] = [
   { id: 'sub-bm', subjectName: 'Bahasa Melayu (1201)', isCore: true, grade: '' },
-  { id: 'sub-eng', subjectName: 'English Language (1123)', isCore: true, grade: '' },
+  { id: 'sub-eng', subjectName: 'IGCSE English as a Second Language (count-in Oral) (0511)', isCore: true, grade: '' },
   { id: 'sub-math', subjectName: 'Mathematics D (4024)', isCore: true, grade: '' },
   { id: 'sub-irk', subjectName: 'Pengetahuan Ugama Islam (IRK 2046)', isCore: false, grade: '' },
   { id: 'sub-sci', subjectName: 'Combined Science (5129)', isCore: false, grade: '' },
@@ -47,15 +65,45 @@ export const AVAILABLE_ELECTIVE_SUBJECTS = [
   'Art & Design (6090)',
   'Food & Nutrition (6065)',
   'Fashion & Textiles (6130)',
-  'Physical Education (PE 0413)'
+  'Physical Education (0413)'
 ];
 
+export function isIgcseSubject(subjectName: string): boolean {
+  const lower = (subjectName || '').toLowerCase();
+  return (
+    lower.includes('second language') ||
+    lower.includes('count-in oral') ||
+    lower.includes('0511') ||
+    lower.includes('0510') ||
+    lower.includes('mathematics (igcse)') ||
+    lower.includes('igcse mathematics') ||
+    lower.includes('0580')
+  );
+}
+
 export function isCreditGrade(grade: string): boolean {
-  return ['A1', 'A2', 'B3', 'B4', 'C5', 'C6'].includes(grade.trim().toUpperCase());
+  if (!grade) return false;
+  const g = grade.trim().toUpperCase();
+  // O-Level Credits: A1, A2, B3, B4, C5, C6
+  // IGCSE Credits: A, B, C (No A*, no numerical suffix)
+  return ['A1', 'A2', 'B3', 'B4', 'C5', 'C6', 'A', 'B', 'C'].includes(g);
 }
 
 export function isPassGrade(grade: string): boolean {
-  return ['A1', 'A2', 'B3', 'B4', 'C5', 'C6', 'D7', 'E8'].includes(grade.trim().toUpperCase());
+  if (!grade) return false;
+  const g = grade.trim().toUpperCase();
+  // O-Level Pass: A1 - E8
+  // IGCSE Pass: A - G (D and E are standard pass benchmarks)
+  return [
+    'A1', 'A2', 'B3', 'B4', 'C5', 'C6', 'D7', 'E8',
+    'A', 'B', 'C', 'D', 'E', 'F', 'G'
+  ].includes(g);
+}
+
+export function isFailGrade(grade: string): boolean {
+  if (!grade) return false;
+  const g = grade.trim().toUpperCase();
+  return ['U9', 'U'].includes(g);
 }
 
 export function calculateCredits(subjects: SubjectGrade[]): {
@@ -97,16 +145,37 @@ export function calculateCredits(subjects: SubjectGrade[]): {
 
     if (isCredit) totalCredits += 1;
 
-    const lowerName = sub.subjectName.toLowerCase();
+    const lowerName = (sub.subjectName || '').toLowerCase();
     if (lowerName.includes('bahasa melayu') || lowerName.includes('1201') || lowerName === 'bm') {
       if (isCredit) bmCredit = true;
       if (isPass) bmPass = true;
-    } else if (lowerName.includes('english') || lowerName.includes('1123') || lowerName.includes('inggeris')) {
+    } else if (
+      lowerName.includes('english') ||
+      lowerName.includes('second language') ||
+      lowerName.includes('count-in oral') ||
+      lowerName.includes('0511') ||
+      lowerName.includes('0510') ||
+      lowerName.includes('1123') ||
+      lowerName.includes('inggeris') ||
+      lowerName.includes('esl')
+    ) {
       if (isCredit) engCredit = true;
       if (isPass) engPass = true;
-    } else if (lowerName.includes('additional mathematics') || lowerName.includes('4037') || lowerName.includes('add math')) {
+    } else if (
+      lowerName.includes('additional mathematics') ||
+      lowerName.includes('4037') ||
+      lowerName.includes('0606') ||
+      lowerName.includes('add math')
+    ) {
       if (isCredit) addMathCredit = true;
-    } else if (lowerName.includes('mathematics') || lowerName.includes('4024') || lowerName.includes('matematik')) {
+    } else if (
+      lowerName.includes('mathematics') ||
+      lowerName.includes('4024') ||
+      lowerName.includes('0580') ||
+      lowerName.includes('matematik') ||
+      lowerName.includes('maths') ||
+      lowerName === 'math'
+    ) {
       if (isCredit) mathCredit = true;
       if (isPass) mathPass = true;
     }
@@ -202,14 +271,14 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       reasonMs: '',
       reasonEn: '',
       prerequisitesMs: [
-        'Sekurang-kurangnya 4 atau 5 Kredit O-Level (A1-C6) yang relevan',
+        'Sekurang-kurangnya 4 atau 5 Kredit O-Level (A1-C6) atau IGCSE (Gred A-C) yang relevan',
         'Kredit Bahasa Melayu (1201) BUKAN syarat am mutlak — pelajar yang belum mencapai kredit BM dibenarkan mengambil semula (retake) peperiksaan BM O-Level semasa belajar di Tingkatan Enam',
-        'Kredit dalam mata pelajaran khusus A-Level yang ingin diambil (Contoh: Gred B4 dalam Sains & Matematik untuk subjek A-Level Sains)'
+        'Kredit dalam mata pelajaran khusus A-Level yang ingin diambil (Contoh: Gred B4 / Gred B IGCSE dalam Sains & Matematik untuk subjek A-Level Sains)'
       ],
       prerequisitesEn: [
-        'Minimum of 4 to 5 relevant O-Level Credits (A1-C6)',
+        'Minimum of 4 to 5 relevant O-Level (A1-C6) or IGCSE (Grade A-C) Credits',
         'Credit in Bahasa Melayu (1201) is NOT a strict prerequisite — students without a BM credit are accepted and permitted to retake their BM O-Level exam while studying in Sixth Form',
-        'Credits in specific prerequisite subjects for chosen A-Level subjects (e.g. Grade B4 in Science & Maths for Science stream)'
+        'Credits in specific prerequisite subjects for chosen A-Level subjects (e.g. Grade B4 or IGCSE Grade B in Science & Maths for Science stream)'
       ],
       recommendedCourses: [
         'Aliran Sains Tulen (Physics, Chemistry, Biology, Mathematics)',
@@ -260,18 +329,18 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       reasonMs: '',
       reasonEn: '',
       prerequisitesMs: [
-        'Sekurang-kurangnya 5 Kredit O-Level yang relevan (A1-C6)',
-        'Kredit Bahasa Inggeris (1123, Gred A1 - C6) adalah WAJIB untuk semua program Diploma PB',
-        'Kredit Matematik D (4024, A1 - C6) wajib untuk School of Science & Engineering dan School of ICT',
+        'Sekurang-kurangnya 5 Kredit yang relevan (Gred A1-C6 / IGCSE Gred A-C)',
+        'Kredit Bahasa Inggeris (1123 / IGCSE English as a Second Language 0511, Gred A1-C6 atau A-C) adalah WAJIB untuk semua program Diploma PB',
+        'Kredit Matematik (4024 / IGCSE Mathematics 0580, Gred A1-C6 atau A-C) wajib untuk School of Science & Engineering dan School of ICT',
         'School of Science & Engineering (Lumut) & Health Sciences: WAJIB Kredit Sains Tulen (Physics 5054 / Chemistry 5070 / Biology 5090). NOTA: Combined Science (5129) tidak setara dengan Sains Tulen untuk program Kejuruteraan PB.',
-        'Lulus Bahasa Melayu (A1 - D7)'
+        'Lulus Bahasa Melayu (A1 - D7 / E8)'
       ],
       prerequisitesEn: [
-        'At least 5 relevant O-Level Credits (A1-C6)',
-        'Credit in English Language (1123, Grade A1 - C6) is MANDATORY for all PB Diploma programmes',
-        'Credit in Mathematics D (4024, A1 - C6) required for School of Science & Engineering and School of ICT',
+        'At least 5 relevant Credits (Grade A1-C6 / IGCSE Grade A-C)',
+        'Credit in English Language (1123 / IGCSE English as a Second Language 0511, Grade A1-C6 or A-C) is MANDATORY for all PB Diploma programmes',
+        'Credit in Mathematics (4024 / IGCSE Mathematics 0580, Grade A1-C6 or A-C) required for School of Science & Engineering and School of ICT',
         'School of Science & Engineering (Lumut) & Health Sciences: MANDATORY Pure Science credit (Physics 5054 / Chemistry 5070 / Biology 5090). NOTE: Combined Science (5129) is not equivalent to Pure Science for PB Engineering programmes.',
-        'Pass in Bahasa Melayu (A1 - D7)'
+        'Pass in Bahasa Melayu (A1 - D7 / E8)'
       ],
       recommendedCourses: [
         'School of Science and Engineering (Lumut): Diploma in Petroleum Engineering, Electrical & Electronic, Civil Engineering',
@@ -577,12 +646,12 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
     pb.statusLabelMs = 'Layak Penuh Semua Sekolah PB (Termasuk Sains & Kejuruteraan)';
     pb.statusLabelEn = 'Fully Eligible for All PB Schools (Including Science & Engineering)';
     pb.statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-    pb.reasonMs = `Cemerlang! Anda mempunyai ${totalCredits} kredit lengkap dengan Kredit Bahasa Inggeris (1123), Matematik D (4024), dan Sains Tulen (${[
+    pb.reasonMs = `Cemerlang! Anda mempunyai ${totalCredits} kredit lengkap dengan Kredit Bahasa Inggeris (1123 / IGCSE ESL 0511), Matematik (4024 / IGCSE 0580), dan Sains Tulen (${[
       hasPhysicsCredit ? 'Physics' : '',
       hasChemistryCredit ? 'Chemistry' : '',
       hasBiologyCredit ? 'Biology' : ''
     ].filter(Boolean).join('/')}). Anda layak memohon semua Sekolah di Politeknik Brunei termasuk School of Science and Engineering (Lumut), School of Health Sciences, School of ICT, dan School of Business.`;
-    pb.reasonEn = `Excellent! You have ${totalCredits} credits with required Credits in English Language (1123), Mathematics D (4024), and Pure Science (${[
+    pb.reasonEn = `Excellent! You have ${totalCredits} credits with required Credits in English Language (1123 / IGCSE ESL 0511), Mathematics (4024 / IGCSE 0580), and Pure Science (${[
       hasPhysicsCredit ? 'Physics' : '',
       hasChemistryCredit ? 'Chemistry' : '',
       hasBiologyCredit ? 'Biology' : ''
@@ -592,22 +661,22 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
     pb.statusLabelMs = 'Layak School of ICT & School of Business Sahaja';
     pb.statusLabelEn = 'Eligible for School of ICT & School of Business Only';
     pb.statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
-    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit berserta Kredit Bahasa Inggeris dan Matematik D. Anda LAYAK untuk program di School of ICT (Cyber Security, Web Dev, Data Analytics) dan School of Business. NOTA PENTING: Untuk School of Science & Engineering (Kejuruteraan Lumut) dan School of Health Sciences, Politeknik Brunei mensyaratkan Sains Tulen (Physics/Chemistry/Biology) — Combined Science (5129) tidak setara dengan subjek Sains Tulen untuk program Kejuruteraan PB.`;
-    pb.reasonEn = `You have ${totalCredits} credits with English Language and Mathematics D credits. You are ELIGIBLE for School of ICT (Cyber Security, Web Dev, Data Analytics) and School of Business. IMPORTANT NOTE: For School of Science & Engineering (Lumut Engineering) and School of Health Sciences, Politeknik Brunei strictly requires Pure Science credits (Physics/Chemistry/Biology) — Combined Science (5129) is not considered equivalent to Pure Science for PB Engineering programmes.`;
+    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit berserta Kredit Bahasa Inggeris dan Matematik. Anda LAYAK untuk program di School of ICT (Cyber Security, Web Dev, Data Analytics) dan School of Business. NOTA PENTING: Untuk School of Science & Engineering (Kejuruteraan Lumut) dan School of Health Sciences, Politeknik Brunei mensyaratkan Sains Tulen (Physics/Chemistry/Biology) — Combined Science (5129) tidak setara dengan subjek Sains Tulen untuk program Kejuruteraan PB.`;
+    pb.reasonEn = `You have ${totalCredits} credits with English Language and Mathematics credits. You are ELIGIBLE for School of ICT (Cyber Security, Web Dev, Data Analytics) and School of Business. IMPORTANT NOTE: For School of Science & Engineering (Lumut Engineering) and School of Health Sciences, Politeknik Brunei strictly requires Pure Science credits (Physics/Chemistry/Biology) — Combined Science (5129) is not considered equivalent to Pure Science for PB Engineering programmes.`;
   } else if (totalCredits >= 5 && engCredit && !mathCredit) {
     pb.status = 'conditional';
     pb.statusLabelMs = 'Layak School of Business Sahaja';
     pb.statusLabelEn = 'Eligible for School of Business Only';
     pb.statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
-    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit berserta Kredit Bahasa Inggeris. Anda layak untuk program Diploma School of Business (Perniagaan, Perakaunan, Pengurusan). Walau bagaimanapun, School of Science & Engineering, School of ICT dan School of Health Sciences memerlukan Kredit Matematik D dan Sains Tulen.`;
-    pb.reasonEn = `You have ${totalCredits} credits and an English Language credit. You qualify for School of Business Diploma programmes (Business Studies, Accounting, Management). However, School of Science & Engineering, School of ICT and School of Health Sciences require Mathematics D credit and Pure Science credits.`;
+    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit berserta Kredit Bahasa Inggeris. Anda layak untuk program Diploma School of Business (Perniagaan, Perakaunan, Pengurusan). Walau bagaimanapun, School of Science & Engineering, School of ICT dan School of Health Sciences memerlukan Kredit Matematik dan Sains Tulen.`;
+    pb.reasonEn = `You have ${totalCredits} credits and an English Language credit. You qualify for School of Business Diploma programmes (Business Studies, Accounting, Management). However, School of Science & Engineering, School of ICT and School of Health Sciences require Mathematics credit and Pure Science credits.`;
   } else if (totalCredits >= 5 && !engCredit) {
     pb.status = 'conditional';
-    pb.statusLabelMs = 'Bersyarat (Perlu Kredit Bahasa Inggeris 1123)';
-    pb.statusLabelEn = 'Conditional (English Language 1123 Credit Required)';
+    pb.statusLabelMs = 'Bersyarat (Perlu Kredit Bahasa Inggeris)';
+    pb.statusLabelEn = 'Conditional (English Language Credit Required)';
     pb.statusColor = 'bg-amber-100 text-amber-900 border-amber-300';
-    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit tetapi Politeknik Brunei mensyaratkan Kredit Bahasa Inggeris (Gred C6 / Gred C ke atas) untuk semua kemasukan Diploma Level 5. Pertimbangkan untuk mengambil semula kertas O-Level Bahasa Inggeris 1123 sesi Mei/Jun atau memulakan pengajian melalui IBTE HNTec / Kolej Swasta.`;
-    pb.reasonEn = `You have ${totalCredits} credits, but Politeknik Brunei strictly mandates an English Language credit (Grade C6 or above) across all Level 5 Diploma programmes. Consider resitting the English 1123 paper in May/June or progressing via IBTE HNTec / Private Colleges.`;
+    pb.reasonMs = `Anda mempunyai ${totalCredits} kredit tetapi Politeknik Brunei mensyaratkan Kredit Bahasa Inggeris (Gred C6 O-Level / Gred C IGCSE ke atas) untuk semua kemasukan Diploma Level 5. Pertimbangkan untuk mengambil semula kertas Bahasa Inggeris atau memulakan pengajian melalui IBTE HNTec / Kolej Swasta.`;
+    pb.reasonEn = `You have ${totalCredits} credits, but Politeknik Brunei strictly mandates an English Language credit (Grade C6 O-Level / Grade C IGCSE or above) across all Level 5 Diploma programmes. Consider resitting the English paper in May/June or progressing via IBTE HNTec / Private Colleges.`;
   } else if (totalCredits >= 3 && totalCredits <= 4) {
     pb.status = 'conditional';
     pb.statusLabelMs = 'Laluan Jambatan Melalui IBTE HNTec (Tahap 4)';

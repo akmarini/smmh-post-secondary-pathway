@@ -79,9 +79,9 @@ export const VisualPathwaysView: React.FC<VisualPathwaysViewProps> = ({
   // Student O-Level Summary
   const creditSummary = calculateCredits(state?.subjectGrades || []);
   const totalCredits = creditSummary.totalCredits;
-  const bmGrade = state?.subjectGrades?.find((s) => s.id === 'sub-bm' || s.id === 'bm')?.grade || '';
-  const engGrade = state?.subjectGrades?.find((s) => s.id === 'sub-eng' || s.id === 'english')?.grade || '';
-  const mathGrade = state?.subjectGrades?.find((s) => s.id === 'sub-math' || s.id === 'math_d')?.grade || '';
+  const bmGrade = state?.subjectGrades?.find((s) => s.id === 'sub-bm' || s.id === 'bm' || s.subjectName?.toLowerCase().includes('bahasa melayu'))?.grade || '';
+  const engGrade = state?.subjectGrades?.find((s) => s.id === 'sub-eng' || s.id === 'english' || s.subjectName?.toLowerCase().includes('english') || s.subjectName?.toLowerCase().includes('second language') || s.subjectName?.toLowerCase().includes('0511') || s.subjectName?.toLowerCase().includes('esl'))?.grade || '';
+  const mathGrade = state?.subjectGrades?.find((s) => s.id === 'sub-math' || s.id === 'math_d' || s.subjectName?.toLowerCase().includes('mathematics') || s.subjectName?.toLowerCase().includes('0580') || s.subjectName?.toLowerCase().includes('math'))?.grade || '';
   const hasBmCredit = isCreditGrade(bmGrade);
   const hasEngCredit = isCreditGrade(engGrade);
   const hasMathCredit = isCreditGrade(mathGrade);

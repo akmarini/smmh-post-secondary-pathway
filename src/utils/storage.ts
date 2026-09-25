@@ -1,5 +1,5 @@
 import { SmmhHalaTujuState, CohortStudentLog } from '../types';
-import { DEFAULT_SUBJECTS } from '../data/pathwayRules';
+import { DEFAULT_SUBJECTS, isCreditGrade } from '../data/pathwayRules';
 import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 
@@ -78,12 +78,12 @@ export async function syncCohortRecordToBackend(state: SmmhHalaTujuState) {
   try {
     const subjectGrades = state?.subjectGrades || [];
     const bm = subjectGrades.find((s) => s.subjectName.toLowerCase().includes('bahasa melayu') || s.subjectName.toLowerCase().includes('bm'))?.grade || '-';
-    const eng = subjectGrades.find((s) => s.subjectName.toLowerCase().includes('english') || s.subjectName.toLowerCase().includes('inggeris'))?.grade || '-';
-    const math = subjectGrades.find((s) => s.subjectName.toLowerCase().includes('mathematics') || s.subjectName.toLowerCase().includes('matematik'))?.grade || '-';
+    const eng = subjectGrades.find((s) => s.subjectName.toLowerCase().includes('english') || s.subjectName.toLowerCase().includes('second language') || s.subjectName.toLowerCase().includes('0511') || s.subjectName.toLowerCase().includes('esl') || s.subjectName.toLowerCase().includes('inggeris'))?.grade || '-';
+    const math = subjectGrades.find((s) => s.subjectName.toLowerCase().includes('mathematics') || s.subjectName.toLowerCase().includes('0580') || s.subjectName.toLowerCase().includes('math') || s.subjectName.toLowerCase().includes('matematik'))?.grade || '-';
     
     let totalCredits = 0;
     subjectGrades.forEach((s) => {
-      if (['A1', 'A2', 'B3', 'B4', 'C5', 'C6'].includes((s.grade || '').toUpperCase())) {
+      if (isCreditGrade(s.grade)) {
         totalCredits += 1;
       }
     });

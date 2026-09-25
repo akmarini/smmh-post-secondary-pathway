@@ -191,9 +191,9 @@ export const PassportView: React.FC<PassportViewProps> = ({
           studentName: profile.studentName || 'Pelajar SMMH',
           studentClass: profile.studentClass,
           totalCredits,
-          bmGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('bahasa melayu'))?.grade || '-',
-          engGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('english'))?.grade || '-',
-          mathGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('mathematics'))?.grade || '-',
+          bmGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('bahasa melayu') || s.subjectName.toLowerCase().includes('bm'))?.grade || '-',
+          engGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('english') || s.subjectName.toLowerCase().includes('second language') || s.subjectName.toLowerCase().includes('0511') || s.subjectName.toLowerCase().includes('esl'))?.grade || '-',
+          mathGrade: state.subjectGrades.find((s) => s.subjectName.toLowerCase().includes('mathematics') || s.subjectName.toLowerCase().includes('0580') || s.subjectName.toLowerCase().includes('math'))?.grade || '-',
           riasecCode: state.riasecCode || riasecData.code,
           topCareers: riasecData.careerSuggestions.map((c) => lang === 'en' ? c.titleEn : c.titleMs),
           dreamPathway: state.firstChoicePathway,
@@ -435,7 +435,9 @@ export const PassportView: React.FC<PassportViewProps> = ({
             <div className="mt-3 pt-3 border-t border-sky-200 grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-xs">
               {state.subjectGrades.map((sub, i) => (
                 <div key={i} className="flex items-center justify-between p-1.5 rounded bg-white border border-slate-200">
-                  <span className="truncate max-w-[110px] font-bold text-slate-800 text-[11px]">{sub.subjectName.split('(')[0]}</span>
+                  <span className="truncate max-w-[130px] font-bold text-slate-800 text-[11px]" title={sub.subjectName}>
+                    {sub.subjectName.toLowerCase().includes('second language') ? 'IGCSE ESL (0511)' : sub.subjectName.split('(')[0].trim()}
+                  </span>
                   <span className="font-bold font-mono px-1.5 py-0.2 rounded bg-sky-50 text-sky-900 border border-sky-200 text-[11px]">
                     {sub.grade || '-'}
                   </span>

@@ -17,6 +17,9 @@ import {
 } from 'lucide-react';
 import { 
   O_LEVEL_GRADES, 
+  IGCSE_GRADES,
+  isIgcseSubject,
+  isFailGrade,
   DEFAULT_SUBJECTS, 
   AVAILABLE_ELECTIVE_SUBJECTS, 
   calculateCredits, 
@@ -139,9 +142,17 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
   };
 
   const handleSubjectNameChange = (subjectId: string, newName: string) => {
-    const updatedSubjects = subjects.map((sub) =>
-      sub.id === subjectId ? { ...sub, subjectName: newName } : sub
-    );
+    const isNewIgcse = isIgcseSubject(newName);
+    const updatedSubjects = subjects.map((sub) => {
+      if (sub.id !== subjectId) return sub;
+      let nextGrade = sub.grade;
+      if (isNewIgcse && !IGCSE_GRADES.includes(nextGrade)) {
+        nextGrade = '';
+      } else if (!isNewIgcse && !O_LEVEL_GRADES.includes(nextGrade)) {
+        nextGrade = '';
+      }
+      return { ...sub, subjectName: newName, grade: nextGrade };
+    });
     updateState((prev) => ({
       ...prev,
       subjectGrades: updatedSubjects
@@ -185,9 +196,9 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
     if (type === 'ptet') {
       sample = [
         { id: 'sub-bm', subjectName: 'Bahasa Melayu (1201)', isCore: true, grade: 'A2' },
-        { id: 'sub-eng', subjectName: 'English Language (1123 / IGCSE)', isCore: true, grade: 'B3' },
+        { id: 'sub-eng', subjectName: 'IGCSE English as a Second Language (count-in Oral) (0511)', isCore: true, grade: 'A' },
         { id: 'sub-math', subjectName: 'Mathematics D (4024)', isCore: true, grade: 'A1' },
-        { id: 'sub-irk', subjectName: 'Pengetahuan Ugama Islam (IRK)', isCore: false, grade: 'A1' },
+        { id: 'sub-irk', subjectName: 'Pengetahuan Ugama Islam (IRK 2046)', isCore: false, grade: 'A1' },
         { id: 'sub-sci', subjectName: 'Physics (5054)', isCore: false, grade: 'B3' },
         { id: 'sub-elec1', subjectName: 'Chemistry (5070)', isCore: false, grade: 'B4' },
         { id: 'sub-elec2', subjectName: 'Biology (5090)', isCore: false, grade: 'C5' },
@@ -196,8 +207,8 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
     } else if (type === 'pb') {
       sample = [
         { id: 'sub-bm', subjectName: 'Bahasa Melayu (1201)', isCore: true, grade: 'B3' },
-        { id: 'sub-eng', subjectName: 'English Language (1123)', isCore: true, grade: 'C5' },
-        { id: 'sub-math', subjectName: 'Mathematics D (4024)', isCore: true, grade: 'C6' },
+        { id: 'sub-eng', subjectName: 'IGCSE English as a Second Language (count-in Oral) (0511)', isCore: true, grade: 'B' },
+        { id: 'sub-math', subjectName: 'IGCSE Mathematics (0580)', isCore: true, grade: 'B' },
         { id: 'sub-irk', subjectName: 'Pengetahuan Ugama Islam (IRK 2046)', isCore: false, grade: 'B4' },
         { id: 'sub-sci', subjectName: 'Combined Science (5129)', isCore: false, grade: 'B4' },
         { id: 'sub-elec1', subjectName: 'Computer Science (2210)', isCore: false, grade: 'A2' },
@@ -207,7 +218,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
     } else {
       sample = [
         { id: 'sub-bm', subjectName: 'Bahasa Melayu (1201)', isCore: true, grade: 'C6' },
-        { id: 'sub-eng', subjectName: 'English Language (1123)', isCore: true, grade: 'D7' },
+        { id: 'sub-eng', subjectName: 'IGCSE English as a Second Language (count-in Oral) (0511)', isCore: true, grade: 'C' },
         { id: 'sub-math', subjectName: 'Mathematics D (4024)', isCore: true, grade: 'C5' },
         { id: 'sub-irk', subjectName: 'Pengetahuan Ugama Islam (IRK 2046)', isCore: false, grade: 'C5' },
         { id: 'sub-sci', subjectName: 'Agriculture (5038)', isCore: false, grade: 'B4' },
@@ -360,11 +371,11 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           <div className="flex items-center gap-2 mt-2">
             {engCredit ? (
               <span className="px-2.5 py-1 rounded bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold text-xs uppercase">
-                {lang === 'ms' ? 'Kredit (A1 - C6)' : 'Credit (A1 - C6)'}
+                {lang === 'ms' ? 'Kredit (A1-C6 / A-C)' : 'Credit (A1-C6 / A-C)'}
               </span>
             ) : engPass ? (
               <span className="px-2.5 py-1 rounded bg-sky-100 text-sky-900 border border-sky-300 font-bold text-xs uppercase">
-                {lang === 'ms' ? 'Lulus (D7 - E8)' : 'Pass Only (D7 - E8)'}
+                {lang === 'ms' ? 'Lulus (D7-E8 / D-E)' : 'Pass Only (D7-E8 / D-E)'}
               </span>
             ) : (
               <span className="px-2.5 py-1 rounded bg-rose-100 text-rose-900 border border-rose-300 font-bold text-xs uppercase">
@@ -377,7 +388,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           </span>
         </div>
 
-        {/* Mathematics D Status */}
+        {/* Mathematics Status */}
         <div className="bg-white p-4 rounded-lg border border-sky-200 shadow-sm flex flex-col justify-between">
           <span className="text-xs uppercase font-bold text-slate-500 tracking-wider">
             {t.mathStatusLabel}
@@ -385,11 +396,11 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           <div className="flex items-center gap-2 mt-2">
             {mathCredit ? (
               <span className="px-2.5 py-1 rounded bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold text-xs uppercase">
-                {lang === 'ms' ? 'Kredit (A1 - C6)' : 'Credit (A1 - C6)'}
+                {lang === 'ms' ? 'Kredit (A1-C6 / A-C)' : 'Credit (A1-C6 / A-C)'}
               </span>
             ) : mathPass ? (
               <span className="px-2.5 py-1 rounded bg-sky-100 text-sky-900 border border-sky-300 font-bold text-xs uppercase">
-                {lang === 'ms' ? 'Lulus (D7 - E8)' : 'Pass Only (D7 - E8)'}
+                {lang === 'ms' ? 'Lulus (D7-E8 / D-E)' : 'Pass Only (D7-E8 / D-E)'}
               </span>
             ) : (
               <span className="px-2.5 py-1 rounded bg-rose-100 text-rose-900 border border-rose-300 font-bold text-xs uppercase">
@@ -412,8 +423,8 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
             </h3>
             <p className="text-xs text-slate-500">
               {lang === 'ms'
-                ? 'Pilih gred Cambridge O-Level (A1 hingga U9) bagi setiap mata pelajaran untuk mengira kelayakan secara automatik.'
-                : 'Select your Cambridge O-Level grades (A1 to U9) for each subject to automatically evaluate admission eligibility.'}
+                ? 'Pilih mata pelajaran dan gred untuk mengira kelayakan secara automatik.'
+                : 'Select subjects and grades to automatically evaluate admission eligibility.'}
             </p>
           </div>
 
@@ -437,6 +448,36 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
           </div>
         </div>
 
+        {/* Grading Scale Info Banner */}
+        <div className="bg-sky-50/80 border border-sky-200/90 rounded-xl p-3 sm:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-sky-950 shadow-xs">
+          <div className="flex items-start gap-2.5">
+            <Sparkles className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
+            <div className="space-y-0.5">
+              <span className="font-bold text-sky-900 block text-xs sm:text-sm">
+                {lang === 'ms' 
+                  ? 'Mata Pelajaran IGCSE: IGCSE English as a Second Language (count-in Oral) (0511) & IGCSE Mathematics (0580)' 
+                  : 'IGCSE Subjects: IGCSE English as a Second Language (count-in Oral) (0511) & IGCSE Mathematics (0580)'}
+              </span>
+              <p className="text-slate-600 text-[11px] leading-relaxed">
+                {lang === 'ms'
+                  ? 'Subjek IGCSE menggunakan gred huruf A hingga U (tanpa nombor & tanpa A*). Gred A, B, C dikira sebagai Kredit.'
+                  : 'IGCSE subjects use letter grades A to U (no numbers & no A*). Grades A, B, C are evaluated as Credits.'}
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 shrink-0 text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
+              {lang === 'ms' ? 'Kredit: A1-C6 / IGCSE A-C' : 'Credit: A1-C6 / IGCSE A-C'}
+            </span>
+            <span className="px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300">
+              {lang === 'ms' ? 'Lulus: D7-E8 / IGCSE D-G' : 'Pass: D7-E8 / IGCSE D-G'}
+            </span>
+            <span className="px-2 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-300">
+              {lang === 'ms' ? 'Ungraded: U9 / IGCSE U' : 'Ungraded: U9 / IGCSE U'}
+            </span>
+          </div>
+        </div>
+
         {/* Subjects Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
@@ -444,9 +485,9 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
               <tr className="bg-gradient-to-r from-sky-600 via-sky-600 to-sky-700 text-white uppercase text-[11px] tracking-wider border border-sky-600">
                 <th className="py-3 px-4 font-bold w-12">#</th>
                 <th className="py-3 px-4 font-bold">{t.subjectCol}</th>
-                <th className="py-3 px-4 font-bold w-28">{t.typeCol}</th>
+                <th className="py-3 px-4 font-bold w-32">{t.typeCol}</th>
                 <th className="py-3 px-4 font-bold w-40">{t.gradeCol}</th>
-                <th className="py-3 px-4 font-bold w-36">{t.statusCol}</th>
+                <th className="py-3 px-4 font-bold w-40">{t.statusCol}</th>
                 <th className="py-3 px-4 font-bold w-20 text-center">{t.actionsCol}</th>
               </tr>
             </thead>
@@ -454,13 +495,42 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
               {subjects.map((sub, idx) => {
                 const isCredit = isCreditGrade(sub.grade);
                 const isPass = isPassGrade(sub.grade);
-                const isFail = sub.grade === 'U9';
+                const isFail = isFailGrade(sub.grade);
+                const isIgcse = isIgcseSubject(sub.subjectName);
 
                 return (
                   <tr key={sub.id} className={`hover:bg-slate-50 transition-colors ${sub.isCore ? 'bg-sky-50/30 font-medium' : ''}`}>
                     <td className="py-3 px-4 text-slate-400 font-mono">{idx + 1}</td>
                     <td className="py-3 px-4">
-                      {sub.isCore ? (
+                      {sub.id === 'sub-eng' ? (
+                        <select
+                          id="select-subject-sub-eng"
+                          value={sub.subjectName}
+                          onChange={(e) => handleSubjectNameChange(sub.id, e.target.value)}
+                          className="w-full px-2.5 py-1.5 border border-sky-300 bg-sky-50/80 hover:bg-sky-50 rounded text-xs font-bold text-slate-900 focus:outline-none focus:ring-1 focus:ring-sky-500 cursor-pointer shadow-2xs"
+                        >
+                          <option value="IGCSE English as a Second Language (count-in Oral) (0511)">
+                            IGCSE English as a Second Language (count-in Oral) (0511)
+                          </option>
+                          <option value="English Language (1123)">
+                            English Language (1123)
+                          </option>
+                        </select>
+                      ) : sub.id === 'sub-math' ? (
+                        <select
+                          id="select-subject-sub-math"
+                          value={sub.subjectName}
+                          onChange={(e) => handleSubjectNameChange(sub.id, e.target.value)}
+                          className="w-full px-2.5 py-1.5 border border-sky-300 bg-sky-50/80 hover:bg-sky-50 rounded text-xs font-bold text-slate-900 focus:outline-none focus:ring-1 focus:ring-sky-500 cursor-pointer shadow-2xs"
+                        >
+                          <option value="Mathematics D (4024)">
+                            Mathematics D (4024)
+                          </option>
+                          <option value="IGCSE Mathematics (0580)">
+                            IGCSE Mathematics (0580)
+                          </option>
+                        </select>
+                      ) : sub.isCore ? (
                         <div className="font-bold text-slate-800 flex items-center gap-1.5">
                           <span>{sub.subjectName}</span>
                         </div>
@@ -490,7 +560,7 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                         id={`select-grade-${sub.id}`}
                         value={sub.grade}
                         onChange={(e) => handleGradeChange(sub.id, e.target.value)}
-                        className={`w-full h-8 px-2 rounded border font-bold text-xs focus:outline-none ${
+                        className={`w-full h-8 px-2 rounded border font-bold text-xs focus:outline-none cursor-pointer ${
                           isCredit
                             ? 'bg-emerald-50 border-emerald-400 text-emerald-900'
                             : isPass
@@ -500,29 +570,37 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
                             : 'bg-white border-slate-300 text-slate-700'
                         }`}
                       >
-                        <option value="">-- Gred / Grade --</option>
-                        {O_LEVEL_GRADES.map((g) => (
-                          <option key={g} value={g}>
-                            {g}
-                          </option>
-                        ))}
+                        <option value="">-- {lang === 'ms' ? 'Pilih Gred' : 'Select Grade'} --</option>
+                        {isIgcse ? (
+                          IGCSE_GRADES.map((g) => (
+                            <option key={`igcse-${g}`} value={g}>
+                              {g}
+                            </option>
+                          ))
+                        ) : (
+                          O_LEVEL_GRADES.map((g) => (
+                            <option key={`olevel-${g}`} value={g}>
+                              {g}
+                            </option>
+                          ))
+                        )}
                       </select>
                     </td>
                     <td className="py-3 px-4">
                       {isCredit ? (
                         <span className="inline-flex items-center gap-1 text-emerald-700 font-bold text-[11px]">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          {t.creditValid}
+                          <span>{t.creditValid}</span>
                         </span>
                       ) : isPass ? (
                         <span className="inline-flex items-center gap-1 text-sky-700 font-bold text-[11px]">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          {t.passOnly}
+                          <span>{t.passOnly}</span>
                         </span>
                       ) : isFail ? (
                         <span className="inline-flex items-center gap-1 text-rose-700 font-bold text-[11px]">
                           <AlertCircle className="w-3.5 h-3.5" />
-                          {t.failGrade}
+                          <span>{t.failGrade}</span>
                         </span>
                       ) : (
                         <span className="text-slate-400 text-[11px] italic">

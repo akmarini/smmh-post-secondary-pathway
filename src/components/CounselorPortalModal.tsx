@@ -16,6 +16,7 @@ import {
 import { CohortStudentLog, YEAR_11_CLASSES } from '../types';
 import { exportCohortToCsv } from '../utils/storage';
 import { useLanguage } from '../context/LanguageContext';
+import { isCreditGrade } from '../data/pathwayRules';
 import { SmmhtLogo } from './SmmhtLogo';
 
 interface CounselorPortalModalProps {
@@ -123,8 +124,8 @@ export const CounselorPortalModal: React.FC<CounselorPortalModalProps> = ({
 
   // Calculate cohort aggregate metrics
   const totalStudents = cohortData.length;
-  const ptetEligibleCount = cohortData.filter((s) => s.totalCredits >= 5 && (s.bmGrade?.startsWith('A') || s.bmGrade?.startsWith('B') || s.bmGrade?.startsWith('C'))).length;
-  const pbEligibleCount = cohortData.filter((s) => s.totalCredits >= 5 && (s.engGrade?.startsWith('A') || s.engGrade?.startsWith('B') || s.engGrade?.startsWith('C'))).length;
+  const ptetEligibleCount = cohortData.filter((s) => s.totalCredits >= 5 && isCreditGrade(s.bmGrade)).length;
+  const pbEligibleCount = cohortData.filter((s) => s.totalCredits >= 5 && isCreditGrade(s.engGrade)).length;
   const passportsCompletedCount = cohortData.filter((s) => s.passportCompleted).length;
   const avgCredits = totalStudents > 0 
     ? (cohortData.reduce((acc, curr) => acc + (curr.totalCredits || 0), 0) / totalStudents).toFixed(1)

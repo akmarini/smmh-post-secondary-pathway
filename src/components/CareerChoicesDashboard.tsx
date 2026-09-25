@@ -47,9 +47,9 @@ export const CareerChoicesDashboard: React.FC<CareerChoicesDashboardProps> = ({
 
   const creditSummary = calculateCredits(state?.subjectGrades || []);
   const totalCredits = creditSummary.totalCredits;
-  const bmGrade = state?.subjectGrades?.find((s) => s.id === 'sub-bm' || s.id === 'bm')?.grade || '';
-  const engGrade = state?.subjectGrades?.find((s) => s.id === 'sub-eng' || s.id === 'english')?.grade || '';
-  const mathGrade = state?.subjectGrades?.find((s) => s.id === 'sub-math' || s.id === 'math_d')?.grade || '';
+  const bmGrade = state?.subjectGrades?.find((s) => s.id === 'sub-bm' || s.id === 'bm' || s.subjectName?.toLowerCase().includes('bahasa melayu'))?.grade || '';
+  const engGrade = state?.subjectGrades?.find((s) => s.id === 'sub-eng' || s.id === 'english' || s.subjectName?.toLowerCase().includes('english') || s.subjectName?.toLowerCase().includes('second language') || s.subjectName?.toLowerCase().includes('0511') || s.subjectName?.toLowerCase().includes('esl'))?.grade || '';
+  const mathGrade = state?.subjectGrades?.find((s) => s.id === 'sub-math' || s.id === 'math_d' || s.subjectName?.toLowerCase().includes('mathematics') || s.subjectName?.toLowerCase().includes('0580') || s.subjectName?.toLowerCase().includes('math'))?.grade || '';
 
   const hasBmCredit = isCreditGrade(bmGrade);
   const hasEngCredit = isCreditGrade(engGrade);
@@ -69,8 +69,8 @@ export const CareerChoicesDashboard: React.FC<CareerChoicesDashboardProps> = ({
       if (!hasEngCredit || !hasMathCredit) {
         return {
           eligible: false,
-          reasonMs: 'Memerlukan kredit asas dalam English (1123) dan Mathematics D (4024) untuk melayakkan ke Tingkatan 6 (A-Level Maths/Physics).',
-          reasonEn: 'Requires prerequisite credit passes in English (1123) and Mathematics D (4024) to enter Sixth Form (A-Level Maths/Physics).'
+          reasonMs: 'Memerlukan kredit asas dalam Bahasa Inggeris (1123 / IGCSE 0511) dan Matematik (4024 / IGCSE 0580) untuk melayakkan ke Tingkatan 6 (A-Level Maths/Physics).',
+          reasonEn: 'Requires prerequisite credit passes in English Language (1123 / IGCSE 0511) and Mathematics (4024 / IGCSE 0580) to enter Sixth Form (A-Level Maths/Physics).'
         };
       }
       return {

@@ -43,9 +43,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const creditSummary = calculateCredits(state?.subjectGrades || []);
   const totalCredits = creditSummary.totalCredits;
-  const bmSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-bm' || s.id === 'bm');
-  const engSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-eng' || s.id === 'english');
-  const mathSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-math' || s.id === 'math_d');
+  const bmSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-bm' || s.id === 'bm' || s.subjectName?.toLowerCase().includes('bahasa melayu'));
+  const engSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-eng' || s.id === 'english' || s.subjectName?.toLowerCase().includes('english') || s.subjectName?.toLowerCase().includes('second language') || s.subjectName?.toLowerCase().includes('0511') || s.subjectName?.toLowerCase().includes('esl'));
+  const mathSubject = (state?.subjectGrades || []).find((s) => s.id === 'sub-math' || s.id === 'math_d' || s.subjectName?.toLowerCase().includes('mathematics') || s.subjectName?.toLowerCase().includes('0580') || s.subjectName?.toLowerCase().includes('math'));
 
   const hasBmCredit = bmSubject ? isCreditGrade(bmSubject.grade) : false;
   const hasEngCredit = engSubject ? isCreditGrade(engSubject.grade) : false;
