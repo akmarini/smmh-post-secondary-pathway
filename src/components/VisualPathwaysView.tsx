@@ -909,6 +909,9 @@ export const VisualPathwaysView: React.FC<VisualPathwaysViewProps> = ({
                 if (selectedNode.id === 'track-polytechnic') {
                   return credits >= 5;
                 }
+                if (selectedNode.id === 'track-ibte-diploma') {
+                  return credits >= 5;
+                }
                 if (selectedNode.id === 'track-ibte-hntec') {
                   return credits >= 3;
                 }

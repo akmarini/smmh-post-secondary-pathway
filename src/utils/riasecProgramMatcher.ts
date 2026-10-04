@@ -121,116 +121,188 @@ const INSTITUTION_RIASEC_CATALOG: Record<string, Record<RiasecDimension, { ms: s
       ]
     }
   },
-  'ibte-hntec': {
+  'ibte-diploma': {
     R: {
       ms: [
-        'HNTec in Automobile Technology & Heavy Vehicles (Sultan Saiful Rijal)',
-        'HNTec in Mechanical Engineering & Manufacturing (Jefri Bolkiah Campus)',
-        'HNTec in Building Services & Geomatics (Nakhoda Ragam Campus)',
-        'HNTec in Agrotechnology & Crop Production (Agro-Technology Campus Wasan)',
-        'HNTec in Aircraft Maintenance & Avionics'
+        'Diploma in Marine Engineering (Akademi Maritim Brunei - Jefri Bolkiah Campus)',
+        'Diploma in Nautical Studies (Akademi Maritim Brunei - Jefri Bolkiah Campus)',
+        'Diploma in Control & Automation Engineering (Jefri Bolkiah Campus)',
+        'Diploma in Agricultural Technology (Agro-Technology Campus Wasan)'
       ],
       en: [
-        'HNTec in Automobile Technology & Heavy Vehicles (Sultan Saiful Rijal)',
-        'HNTec in Mechanical Engineering & Manufacturing (Jefri Bolkiah Campus)',
-        'HNTec in Building Services & Geomatics (Nakhoda Ragam Campus)',
-        'HNTec in Agrotechnology & Crop Production (Agro-Technology Campus Wasan)',
-        'HNTec in Aircraft Maintenance & Avionics'
+        'Diploma in Marine Engineering (Brunei Maritime Academy - Jefri Bolkiah Campus)',
+        'Diploma in Nautical Studies (Brunei Maritime Academy - Jefri Bolkiah Campus)',
+        'Diploma in Control & Automation Engineering (Jefri Bolkiah Campus)',
+        'Diploma in Agricultural Technology (Agro-Technology Campus Wasan)'
       ]
     },
     I: {
       ms: [
-        'HNTec in Laboratory Science & Quality Control (Jefri Bolkiah)',
-        'HNTec in Information Technology & Network Systems (Nakhoda Ragam)'
+        'Diploma in Refinery Operator / Process Engineering (Jefri Bolkiah Campus)',
+        'Diploma in Information & Communication Technology (Sultan Saiful Rijal & Jefri Bolkiah)'
       ],
       en: [
-        'HNTec in Laboratory Science & Quality Control (Jefri Bolkiah)',
-        'HNTec in Information Technology & Network Systems (Nakhoda Ragam)'
+        'Diploma in Refinery Operator / Process Engineering (Jefri Bolkiah Campus)',
+        'Diploma in Information & Communication Technology (Sultan Saiful Rijal & Jefri Bolkiah)'
       ]
     },
     A: {
       ms: [
-        'HNTec in Multimedia Technology & Graphic Design (Sultan Saiful Rijal)',
-        'HNTec in Interior Design & Digital Craft (Nakhoda Ragam)'
+        'Diploma in Culinary Arts & Food Heritage (Sultan Saiful Rijal Campus)',
+        'Diploma in Hospitality Management & Event Experience (Sultan Saiful Rijal Campus)'
       ],
       en: [
-        'HNTec in Multimedia Technology & Graphic Design (Sultan Saiful Rijal)',
-        'HNTec in Interior Design & Digital Craft (Nakhoda Ragam)'
+        'Diploma in Culinary Arts & Food Heritage (Sultan Saiful Rijal Campus)',
+        'Diploma in Hospitality Management & Event Experience (Sultan Saiful Rijal Campus)'
       ]
     },
     S: {
       ms: [
-        'HNTec in Hospitality & Tourism Operations (Sultan Saiful Rijal)',
-        'HNTec in Culinary Arts & Food Service',
-        'HNTec in Early Childhood Care & Education'
+        'Diploma in Hospitality Management & Guest Services (Sultan Saiful Rijal Campus)',
+        'Diploma in Maritime Navigation & Crew Safety Management (Jefri Bolkiah Campus)'
       ],
       en: [
-        'HNTec in Hospitality & Tourism Operations (Sultan Saiful Rijal)',
-        'HNTec in Culinary Arts & Food Service',
-        'HNTec in Early Childhood Care & Education'
+        'Diploma in Hospitality Management & Guest Services (Sultan Saiful Rijal Campus)',
+        'Diploma in Maritime Navigation & Crew Safety Management (Jefri Bolkiah Campus)'
       ]
     },
     E: {
       ms: [
-        'HNTec in Business & Marketing (Business Campus Gadong)',
-        'HNTec in Retail Management & E-Commerce',
-        'HNTec in Port Operations & Logistics Management'
+        'Diploma in Business & Financial Services (Business Campus Gadong)',
+        'Diploma in Port Operations & Nautical Shipping Logistics (Jefri Bolkiah Campus)'
       ],
       en: [
-        'HNTec in Business & Marketing (Business Campus Gadong)',
-        'HNTec in Retail Management & E-Commerce',
-        'HNTec in Port Operations & Logistics Management'
+        'Diploma in Business & Financial Services (Business Campus Gadong)',
+        'Diploma in Port Operations & Nautical Shipping Logistics (Jefri Bolkiah Campus)'
+      ]
+    },
+    C: {
+      ms: [
+        'Diploma in Financial Services & Accounting Analytics (Business Campus Gadong)',
+        'Diploma in Data Systems & Process Operations (Jefri Bolkiah Campus)'
+      ],
+      en: [
+        'Diploma in Financial Services & Accounting Analytics (Business Campus Gadong)',
+        'Diploma in Data Systems & Process Operations (Jefri Bolkiah Campus)'
+      ]
+    }
+  },
+  'ibte-hntec': {
+    R: {
+      ms: [
+        'HNTec in Automotive Technology & Heavy Vehicles (Mechanical Campus Tungku)',
+        'HNTec in Mechanical Engineering & Manufacturing (Mechanical & Jefri Bolkiah)',
+        'HNTec in Building Services & Geomatics (Nakhoda Ragam Campus)',
+        'HNTec in Agrotechnology & Crop Production (Agro-Technology Campus Wasan)',
+        'HNTec in Aircraft Maintenance Engineering (Airframe & Engine / Avionics) (Sultan Saiful Rijal)'
+      ],
+      en: [
+        'HNTec in Automotive Technology & Heavy Vehicles (Mechanical Campus Tungku)',
+        'HNTec in Mechanical Engineering & Manufacturing (Mechanical & Jefri Bolkiah)',
+        'HNTec in Building Services & Geomatics (Nakhoda Ragam Campus)',
+        'HNTec in Agrotechnology & Crop Production (Agro-Technology Campus Wasan)',
+        'HNTec in Aircraft Maintenance Engineering (Airframe & Engine / Avionics) (Sultan Saiful Rijal)'
+      ]
+    },
+    I: {
+      ms: [
+        'HNTec in Laboratory Science & Quality Testing (Agro-Technology Campus Wasan)',
+        'HNTec in Information Technology & Computer Networking (Sultan Saiful Rijal & Jefri Bolkiah)'
+      ],
+      en: [
+        'HNTec in Laboratory Science & Quality Testing (Agro-Technology Campus Wasan)',
+        'HNTec in Information Technology & Computer Networking (Sultan Saiful Rijal & Jefri Bolkiah)'
+      ]
+    },
+    A: {
+      ms: [
+        'HNTec in Interior Design & Digital Craft (Nakhoda Ragam Campus)',
+        'HNTec in Electronics and Media Technology (Sultan Saiful Rijal Campus)'
+      ],
+      en: [
+        'HNTec in Interior Design & Digital Craft (Nakhoda Ragam Campus)',
+        'HNTec in Electronics and Media Technology (Sultan Saiful Rijal Campus)'
+      ]
+    },
+    S: {
+      ms: [
+        'HNTec in Hospitality Operations & Culinary Arts (Sultan Saiful Rijal Campus)',
+        'HNTec in Travel & Tourism Operations (Sultan Saiful Rijal Campus)'
+      ],
+      en: [
+        'HNTec in Hospitality Operations & Culinary Arts (Sultan Saiful Rijal Campus)',
+        'HNTec in Travel & Tourism Operations (Sultan Saiful Rijal Campus)'
+      ]
+    },
+    E: {
+      ms: [
+        'HNTec in Business Management & Marketing (Business Campus Gadong)',
+        'HNTec in Office Administration & Retail Operations (Business Campus Gadong)'
+      ],
+      en: [
+        'HNTec in Business Management & Marketing (Business Campus Gadong)',
+        'HNTec in Office Administration & Retail Operations (Business Campus Gadong)'
       ]
     },
     C: {
       ms: [
         'HNTec in Business Accounting (Business Campus Gadong)',
-        'HNTec in Office Administration & Data Records'
+        'HNTec in Information & Library Studies (Sultan Saiful Rijal Campus)'
       ],
       en: [
         'HNTec in Business Accounting (Business Campus Gadong)',
-        'HNTec in Office Administration & Data Records'
+        'HNTec in Information & Library Studies (Sultan Saiful Rijal Campus)'
       ]
     }
   },
   'ibte-ntec': {
     R: {
       ms: [
-        'NTec in Light Vehicle Mechanics & Automotive Services',
-        'NTec in Welding & Fabrication (ISQ Energy Apprenticeship)',
-        'NTec in Refrigeration & Air-Conditioning'
+        'NTec in Light Vehicle Mechanics & Body Repair (Mechanical Campus Tungku)',
+        'NTec in Welding & Metal Fabrication (Mechanical & Sultan Bolkiah Campuses)',
+        'NTec in Building Craft - Carpentry & Plumbing (Nakhoda Ragam Campus)'
       ],
       en: [
-        'NTec in Light Vehicle Mechanics & Automotive Services',
-        'NTec in Welding & Fabrication (ISQ Energy Apprenticeship)',
-        'NTec in Refrigeration & Air-Conditioning'
+        'NTec in Light Vehicle Mechanics & Body Repair (Mechanical Campus Tungku)',
+        'NTec in Welding & Metal Fabrication (Mechanical & Sultan Bolkiah Campuses)',
+        'NTec in Building Craft - Carpentry & Plumbing (Nakhoda Ragam Campus)'
       ]
     },
     I: {
-      ms: ['NTec in Industrial Operations & Measurement'],
-      en: ['NTec in Industrial Operations & Measurement']
+      ms: [
+        'NTec in Crop Production & Aquaculture (Agro-Technology Campus Wasan)',
+        'NTec in Industrial Machining & Measurement (Mechanical Campus Tungku)'
+      ],
+      en: [
+        'NTec in Crop Production & Aquaculture (Agro-Technology Campus Wasan)',
+        'NTec in Industrial Machining & Measurement (Mechanical Campus Tungku)'
+      ]
     },
     A: {
-      ms: ['NTec in Building Craft & Decorative Finishing'],
-      en: ['NTec in Building Craft & Decorative Finishing']
+      ms: [
+        'NTec in Building Craft & Painting Decorating (Nakhoda Ragam Campus)'
+      ],
+      en: [
+        'NTec in Building Craft & Painting Decorating (Nakhoda Ragam Campus)'
+      ]
     },
     S: {
       ms: [
-        'NTec in Food Preparation & Culinary Arts',
-        'NTec in Hospitality & Guest Services'
+        'NTec in Culinary Skills & Food Preparation (Sultan Saiful Rijal Campus)',
+        'NTec in Food & Beverage Operations (Sultan Saiful Rijal Campus)'
       ],
       en: [
-        'NTec in Food Preparation & Culinary Arts',
-        'NTec in Hospitality & Guest Services'
+        'NTec in Culinary Skills & Food Preparation (Sultan Saiful Rijal Campus)',
+        'NTec in Food & Beverage Operations (Sultan Saiful Rijal Campus)'
       ]
     },
     E: {
-      ms: ['NTec in Retail Sales & Customer Operations'],
-      en: ['NTec in Retail Sales & Customer Operations']
+      ms: ['NTec in Retail Sales & Customer Operations (Business Campus Gadong)'],
+      en: ['NTec in Retail Sales & Customer Operations (Business Campus Gadong)']
     },
     C: {
-      ms: ['NTec in Business & Office Support Services'],
-      en: ['NTec in Business & Office Support Services']
+      ms: ['NTec in Business Administration & Office Support (Business Campus Gadong)'],
+      en: ['NTec in Business Administration & Office Support (Business Campus Gadong)']
     }
   },
   'private-colleges': {

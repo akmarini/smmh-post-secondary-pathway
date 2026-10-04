@@ -368,7 +368,80 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       allowanceInfoEn: ''
     },
 
-    // 3. IBTE HNTec (Higher National Technical Education Certificate)
+    // 3. IBTE Diploma (BDQF Level 5 - Higher TVET Diploma)
+    {
+      id: 'ibte-diploma',
+      name: 'IBTE Diploma (Tahap 5 BDQF) - Program Diploma Tinggi TVET',
+      nameMs: 'IBTE Diploma (Tahap 5 BDQF) - Program Diploma Tinggi TVET',
+      nameEn: 'IBTE Diploma (BDQF Level 5) - Higher TVET Diploma Programmes',
+      institutionName: 'Institut Pendidikan Teknikal Brunei (IBTE)',
+      institutionNameMs: 'Institut Pendidikan Teknikal Brunei (IBTE)',
+      institutionNameEn: 'Institute of Brunei Technical Education (IBTE)',
+      campusLocation: 'Kampus Jefri Bolkiah (Kuala Belait), Kampus Sultan Saiful Rijal, Kampus Agro-Teknologi Wasan & Kampus Perniagaan Gadong',
+      campusLocationMs: 'Kampus Jefri Bolkiah (Kuala Belait), Kampus Sultan Saiful Rijal, Kampus Agro-Teknologi Wasan & Kampus Perniagaan Gadong',
+      campusLocationEn: 'Jefri Bolkiah Campus (Kuala Belait), Sultan Saiful Rijal Campus, Agro-Technology Campus Wasan & Business Campus Gadong',
+      duration: '2.5 hingga 3 Tahun (Termasuk Latihan Industri Antarabangsa / Pelayaran Laut)',
+      durationMs: '2.5 hingga 3 Tahun (Termasuk Latihan Industri Antarabangsa / Pelayaran Laut)',
+      durationEn: '2.5 to 3 Years (Includes International / Sea-Time Industrial Internship)',
+      qualificationLevel: 'BDQF Tahap 5 (Diploma Kebangsaan Tinggi)',
+      qualificationLevelMs: 'BDQF Tahap 5 (Diploma Kebangsaan Tinggi)',
+      qualificationLevelEn: 'BDQF Level 5 (Higher National Diploma)',
+      minCredits: 5,
+      status: 'not_eligible',
+      statusLabelMs: 'Belum Mencapai Syarat',
+      statusLabelEn: 'Entry Requirements Not Met',
+      statusColor: 'bg-rose-100 text-rose-800 border-rose-300',
+      reasonMs: '',
+      reasonEn: '',
+      prerequisitesMs: [
+        'Sekurang-kurangnya 5 Kredit O-Level berkaitan (Wajib Kredit Bahasa Inggeris & Matematik/Sains bagi bidang Kejuruteraan & Maritim)',
+        'Atau kelulusan Sijil HNTec (BDQF Tahap 4) berkaitan dengan Purata Nilai Gred (GPA) minimum 2.7 ke atas',
+        'Lulus ujian temu duga khas, ujian bakat praktikal, dan pemeriksaan kesihatan piawaian industri (ENG1/Maritim untuk Akademi Maritim Brunei)'
+      ],
+      prerequisitesEn: [
+        'Minimum of 5 relevant O-Level Credits (Mandatory English Language & Mathematics/Science for Engineering & Maritime disciplines)',
+        'Or relevant HNTec (BDQF Level 4) certificate with minimum GPA of 2.7 or above',
+        'Pass interview assessment, practical aptitude test, and certified medical fitness examination (ENG1/Maritime for Brunei Maritime Academy)'
+      ],
+      recommendedCourses: [
+        'Diploma in Marine Engineering (Akademi Maritim Brunei - Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Nautical Studies (Akademi Maritim Brunei - Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Control & Automation Engineering (Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Refinery Operator / Process Engineering (Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Information & Communication Technology (Kampus Sultan Saiful Rijal & Kampus Jefri Bolkiah)',
+        'Diploma in Hospitality Management & Culinary Arts (Kampus Sultan Saiful Rijal)',
+        'Diploma in Agricultural Technology (Agrotechnology) (Kampus Agro-Teknologi Wasan)',
+        'Diploma in Business & Financial Services (Kampus Perniagaan Gadong)'
+      ],
+      recommendedCoursesMs: [
+        'Diploma in Marine Engineering (Akademi Maritim Brunei - Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Nautical Studies (Akademi Maritim Brunei - Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Control & Automation Engineering (Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Refinery Operator / Process Engineering (Kampus Jefri Bolkiah, Kuala Belait)',
+        'Diploma in Information & Communication Technology (Kampus Sultan Saiful Rijal & Kampus Jefri Bolkiah)',
+        'Diploma in Hospitality Management & Culinary Arts (Kampus Sultan Saiful Rijal)',
+        'Diploma in Agricultural Technology (Agrotechnology) (Kampus Agro-Teknologi Wasan)',
+        'Diploma in Business & Financial Services (Kampus Perniagaan Gadong)'
+      ],
+      recommendedCoursesEn: [
+        'Diploma in Marine Engineering (Brunei Maritime Academy - Jefri Bolkiah Campus, Kuala Belait)',
+        'Diploma in Nautical Studies (Brunei Maritime Academy - Jefri Bolkiah Campus, Kuala Belait)',
+        'Diploma in Control & Automation Engineering (Jefri Bolkiah Campus, Kuala Belait)',
+        'Diploma in Refinery Operator / Process Engineering (Jefri Bolkiah Campus, Kuala Belait)',
+        'Diploma in Information & Communication Technology (Sultan Saiful Rijal & Jefri Bolkiah Campuses)',
+        'Diploma in Hospitality Management & Culinary Arts (Sultan Saiful Rijal Campus)',
+        'Diploma in Agricultural Technology (Agrotechnology) (Agro-Technology Campus Wasan)',
+        'Diploma in Business & Financial Services (Business Campus Gadong)'
+      ],
+      intakePortal: 'Portal Pengambilan Pelajar IBTE (TVeCAS) & HECAS',
+      intakePortalMs: 'Portal Pengambilan Pelajar IBTE (TVeCAS) & HECAS',
+      intakePortalEn: 'IBTE TVET Admission Portal (TVeCAS) & HECAS',
+      allowanceInfo: '',
+      allowanceInfoMs: '',
+      allowanceInfoEn: ''
+    },
+
+    // 4. IBTE HNTec (Higher National Technical Education Certificate)
     {
       id: 'ibte-hntec',
       name: 'IBTE HNTec (Higher National Technical Education Certificate) - Tahap 4',
@@ -377,9 +450,9 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       institutionName: 'Institut Pendidikan Teknikal Brunei (IBTE)',
       institutionNameMs: 'Institut Pendidikan Teknikal Brunei (IBTE)',
       institutionNameEn: 'Institute of Brunei Technical Education (IBTE)',
-      campusLocation: 'Kampus Nakhoda Ragam, Sultan Saiful Rijal, Jefri Bolkiah & Agro-Teknologi Wasan',
-      campusLocationMs: 'Kampus Nakhoda Ragam, Sultan Saiful Rijal, Jefri Bolkiah & Agro-Teknologi Wasan',
-      campusLocationEn: 'Nakhoda Ragam, Sultan Saiful Rijal, Jefri Bolkiah & Agro-Technology Wasan Campuses',
+      campusLocation: 'Semua 7 Kampus Cawangan IBTE (Sultan Saiful Rijal, Nakhoda Ragam, Mekanikal, Perniagaan, Agro-Teknologi Wasan, Jefri Bolkiah & Sultan Bolkiah)',
+      campusLocationMs: 'Semua 7 Kampus Cawangan IBTE (Sultan Saiful Rijal, Nakhoda Ragam, Mekanikal, Perniagaan, Agro-Teknologi Wasan, Jefri Bolkiah & Sultan Bolkiah)',
+      campusLocationEn: 'All 7 IBTE Campuses (Sultan Saiful Rijal, Nakhoda Ragam, Mechanical, Business, Agro-Technology Wasan, Jefri Bolkiah & Sultan Bolkiah)',
       duration: '2 Tahun (Amali Bersepadu)',
       durationMs: '2 Tahun (Amali Bersepadu)',
       durationEn: '2 Years (Integrated Practical Apprenticeship)',
@@ -404,25 +477,34 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
         'Pass in Mathematics or Science for technical and IT disciplines'
       ],
       recommendedCourses: [
-        'HNTec in Computer Networking & Security (Nakhoda Ragam Campus)',
-        'HNTec in Mechanical Engineering & Automotive Technology (Mechanical Campus)',
-        'HNTec in Agro-Technology & Crop Production (Wasan Campus - Berdekatan Tutong)',
-        'HNTec in Hospitality Operations & Culinary Arts (Sultan Saiful Rijal Campus)',
-        'HNTec in Business & Office Administration (Business Campus Gadong)'
+        'HNTec in Aircraft Maintenance Engineering (Airframe & Engine / Avionics) (Kampus Sultan Saiful Rijal)',
+        'HNTec in Hospitality Operations & Culinary Arts (Kampus Sultan Saiful Rijal)',
+        'HNTec in Information Technology & Computer Networking (Kampus Sultan Saiful Rijal & Kampus Jefri Bolkiah)',
+        'HNTec in Construction & Draftsmanship / Building Services / Geomatics (Kampus Nakhoda Ragam)',
+        'HNTec in Automotive Technology & Heavy Vehicle Engineering (Kampus Mekanikal, Tungku)',
+        'HNTec in Business Management, Accounting & Office Administration (Kampus Perniagaan, Gadong)',
+        'HNTec in Agrotechnology & Crop Production / Laboratory Science (Kampus Agro-Teknologi Wasan - Berdekatan Tutong)',
+        'HNTec in Plant Engineering, Instrumentation & Control (Kampus Jefri Bolkiah & Kampus Sultan Bolkiah, Belait)'
       ],
       recommendedCoursesMs: [
-        'HNTec in Computer Networking & Security (Nakhoda Ragam Campus)',
-        'HNTec in Mechanical Engineering & Automotive Technology (Mechanical Campus)',
-        'HNTec in Agro-Technology & Crop Production (Wasan Campus - Berdekatan Tutong)',
-        'HNTec in Hospitality Operations & Culinary Arts (Sultan Saiful Rijal Campus)',
-        'HNTec in Business & Office Administration (Business Campus Gadong)'
+        'HNTec in Aircraft Maintenance Engineering (Airframe & Engine / Avionics) (Kampus Sultan Saiful Rijal)',
+        'HNTec in Hospitality Operations & Culinary Arts (Kampus Sultan Saiful Rijal)',
+        'HNTec in Information Technology & Computer Networking (Kampus Sultan Saiful Rijal & Kampus Jefri Bolkiah)',
+        'HNTec in Construction & Draftsmanship / Building Services / Geomatics (Kampus Nakhoda Ragam)',
+        'HNTec in Automotive Technology & Heavy Vehicle Engineering (Kampus Mekanikal, Tungku)',
+        'HNTec in Business Management, Accounting & Office Administration (Kampus Perniagaan, Gadong)',
+        'HNTec in Agrotechnology & Crop Production / Laboratory Science (Kampus Agro-Teknologi Wasan - Berdekatan Tutong)',
+        'HNTec in Plant Engineering, Instrumentation & Control (Kampus Jefri Bolkiah & Kampus Sultan Bolkiah, Belait)'
       ],
       recommendedCoursesEn: [
-        'HNTec in Computer Networking & Security (Nakhoda Ragam Campus)',
-        'HNTec in Mechanical Engineering & Automotive Technology (Mechanical Campus)',
-        'HNTec in Agro-Technology & Crop Production (Wasan Campus - Near Tutong)',
+        'HNTec in Aircraft Maintenance Engineering (Airframe & Engine / Avionics) (Sultan Saiful Rijal Campus)',
         'HNTec in Hospitality Operations & Culinary Arts (Sultan Saiful Rijal Campus)',
-        'HNTec in Business & Office Administration (Business Campus Gadong)'
+        'HNTec in Information Technology & Computer Networking (Sultan Saiful Rijal & Jefri Bolkiah Campuses)',
+        'HNTec in Construction & Draftsmanship / Building Services / Geomatics (Nakhoda Ragam Campus)',
+        'HNTec in Automotive Technology & Heavy Vehicle Engineering (Mechanical Campus, Tungku)',
+        'HNTec in Business Management, Accounting & Office Administration (Business Campus, Gadong)',
+        'HNTec in Agrotechnology & Crop Production / Laboratory Science (Agro-Technology Campus Wasan - Near Tutong)',
+        'HNTec in Plant Engineering, Instrumentation & Control (Jefri Bolkiah & Sultan Bolkiah Campuses, Belait)'
       ],
       intakePortal: 'Sistem Pengambilan Pelajar IBTE (TVET Admission Portal) - Januari & Julai',
       intakePortalMs: 'Sistem Pengambilan Pelajar IBTE (TVET Admission Portal) - Januari & Julai',
@@ -432,7 +514,7 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       allowanceInfoEn: ''
     },
 
-    // 4. IBTE NTec (National Technical Education Certificate)
+    // 5. IBTE NTec (National Technical Education Certificate)
     {
       id: 'ibte-ntec',
       name: 'IBTE NTec (National Technical Education Certificate) - Tahap 3 Kemahiran Asas',
@@ -441,9 +523,9 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       institutionName: 'Institut Pendidikan Teknikal Brunei (IBTE)',
       institutionNameMs: 'Institut Pendidikan Teknikal Brunei (IBTE)',
       institutionNameEn: 'Institute of Brunei Technical Education (IBTE)',
-      campusLocation: 'Semua Kampus Cawangan IBTE Brunei-Muara, Tutong & Belait',
-      campusLocationMs: 'Semua Kampus Cawangan IBTE Brunei-Muara, Tutong & Belait',
-      campusLocationEn: 'All IBTE Campuses in Brunei-Muara, Tutong & Belait Districts',
+      campusLocation: 'Semua 7 Kampus Cawangan IBTE Brunei-Muara & Belait',
+      campusLocationMs: 'Semua 7 Kampus Cawangan IBTE Brunei-Muara & Belait',
+      campusLocationEn: 'All 7 IBTE Campuses across Brunei-Muara & Belait Districts',
       duration: '1 hingga 2 Tahun',
       durationMs: '1 hingga 2 Tahun',
       durationEn: '1 to 2 Years',
@@ -458,30 +540,36 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       reasonMs: '',
       reasonEn: '',
       prerequisitesMs: [
-        'Sekurang-kurangnya 1 hingga 2 Kredit O-Level atau tamat persekolahan Tahun 11',
+        'Sekurang-kurangnya 1 hingga 2 Kredit O-Level atau tamat persekolahan Tahun 11 SMMH',
         'Lulus ujian temu duga dan amali yang ditetapkan oleh pihak IBTE'
       ],
       prerequisitesEn: [
-        'Minimum of 1 to 2 O-Level Credits or completion of Year 11 secondary schooling',
+        'Minimum of 1 to 2 O-Level Credits or completion of Year 11 SMMH secondary schooling',
         'Pass interview and practical assessment conducted by IBTE'
       ],
       recommendedCourses: [
-        'NTec in Welding & Metal Fabrication (Industri Minyak & Gas)',
-        'NTec in Electrical Installation & Air-Conditioning Technology',
-        'NTec in Culinary Skills & Pastry Making',
-        'NTec in Crop & Livestock Production (Pertanian Agro Tutong)'
+        'NTec in Light Vehicle Mechanics & Vehicle Body Repair (Kampus Mekanikal, Tungku)',
+        'NTec in Building Craft - Carpentry, Plumbing & Masonry (Kampus Nakhoda Ragam)',
+        'NTec in Culinary Skills & Food & Beverage Operations (Kampus Sultan Saiful Rijal)',
+        'NTec in Business Administration & Retail Operations (Kampus Perniagaan, Gadong)',
+        'NTec in Crop Production, Aquaculture & Food Processing (Kampus Agro-Teknologi Wasan)',
+        'NTec in Industrial Machining & Metal Fabrication (Kampus Mekanikal & Kampus Sultan Bolkiah)'
       ],
       recommendedCoursesMs: [
-        'NTec in Welding & Metal Fabrication (Industri Minyak & Gas)',
-        'NTec in Electrical Installation & Air-Conditioning Technology',
-        'NTec in Culinary Skills & Pastry Making',
-        'NTec in Crop & Livestock Production (Pertanian Agro Tutong)'
+        'NTec in Light Vehicle Mechanics & Vehicle Body Repair (Kampus Mekanikal, Tungku)',
+        'NTec in Building Craft - Carpentry, Plumbing & Masonry (Kampus Nakhoda Ragam)',
+        'NTec in Culinary Skills & Food & Beverage Operations (Kampus Sultan Saiful Rijal)',
+        'NTec in Business Administration & Retail Operations (Kampus Perniagaan, Gadong)',
+        'NTec in Crop Production, Aquaculture & Food Processing (Kampus Agro-Teknologi Wasan)',
+        'NTec in Industrial Machining & Metal Fabrication (Kampus Mekanikal & Kampus Sultan Bolkiah)'
       ],
       recommendedCoursesEn: [
-        'NTec in Welding & Metal Fabrication (Oil & Gas Industry)',
-        'NTec in Electrical Installation & Air-Conditioning Technology',
-        'NTec in Culinary Skills & Pastry Making',
-        'NTec in Crop & Livestock Production (Agro Farming Tutong)'
+        'NTec in Light Vehicle Mechanics & Vehicle Body Repair (Mechanical Campus, Tungku)',
+        'NTec in Building Craft - Carpentry, Plumbing & Masonry (Nakhoda Ragam Campus)',
+        'NTec in Culinary Skills & Food & Beverage Operations (Sultan Saiful Rijal Campus)',
+        'NTec in Business Administration & Retail Operations (Business Campus, Gadong)',
+        'NTec in Crop Production, Aquaculture & Food Processing (Agro-Technology Campus Wasan)',
+        'NTec in Industrial Machining & Metal Fabrication (Mechanical & Sultan Bolkiah Campuses)'
       ],
       intakePortal: 'TVET Admission Portal IBTE',
       intakePortalMs: 'TVET Admission Portal IBTE',
@@ -491,18 +579,18 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       allowanceInfoEn: ''
     },
 
-    // 5. IBTE Apprenticeship Scheme (EICF & ISQ Energy Programs)
+    // 6. IBTE Apprenticeship Scheme (EICF & ISQ Energy Programs)
     {
       id: 'ibte-apprenticeship',
       name: 'Skim Perantisan Industri IBTE (EICF Energy Industry Competency)',
       nameMs: 'Skim Perantisan Industri IBTE (EICF Energy Industry Competency)',
       nameEn: 'IBTE Industry Apprenticeship Scheme (EICF / ISQ Energy Programmes)',
-      institutionName: 'IBTE & Sektor Industri Minyak/Gas (BSP / Megamas / Adinin)',
-      institutionNameMs: 'IBTE & Sektor Industri Minyak/Gas (BSP / Megamas / Adinin)',
-      institutionNameEn: 'IBTE & Energy/Oil & Gas Industry (BSP / Megamas / Adinin)',
-      campusLocation: 'Kampus Jefri Bolkiah (Kuala Belait) & Pusat Latihan Industri',
-      campusLocationMs: 'Kampus Jefri Bolkiah (Kuala Belait) & Pusat Latihan Industri',
-      campusLocationEn: 'Jefri Bolkiah Campus (Kuala Belait) & Industry Training Facilities',
+      institutionName: 'IBTE & Sektor Industri Minyak/Gas (BSP / Megamas / Adinin / UNN)',
+      institutionNameMs: 'IBTE & Sektor Industri Minyak/Gas (BSP / Megamas / Adinin / UNN)',
+      institutionNameEn: 'IBTE & Energy/Oil & Gas Industry (BSP / Megamas / Adinin / UNN)',
+      campusLocation: 'Kampus Sultan Bolkiah (Seria), Kampus Jefri Bolkiah (Kuala Belait), Kampus Sultan Saiful Rijal & Pusat Latihan Industri',
+      campusLocationMs: 'Kampus Sultan Bolkiah (Seria), Kampus Jefri Bolkiah (Kuala Belait), Kampus Sultan Saiful Rijal & Pusat Latihan Industri',
+      campusLocationEn: 'Sultan Bolkiah Campus (Seria), Jefri Bolkiah Campus (Kuala Belait), Sultan Saiful Rijal Campus & Partner Industry Training Facilities',
       duration: '1 hingga 1.5 Tahun (Tajaan Penuh Industri)',
       durationMs: '1 hingga 1.5 Tahun (Tajaan Penuh Industri)',
       durationEn: '1 to 1.5 Years (Fully Sponsored by Energy Industry)',
@@ -527,19 +615,28 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
         'Pass interview and physical aptitude test by industrial sponsors'
       ],
       recommendedCourses: [
-        'ISQ in Rig Rigger & Scaffolding Operations (Offshore BSP)',
-        'ISQ in Marker Fitter & Pipe Welding Specialist',
-        'HNTec Industrial Apprenticeship in Plant Engineering Operations'
+        'ISQ in Industrial Welding (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Scaffolding Operations (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Rigging & Rigger Fitter (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Marker Fitter & Pipe Fitting (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'Skim Perantisan Deck Rating & Engine Rating (Akademi Maritim Brunei - Kampus Jefri Bolkiah)',
+        'Skim Perantisan Kejuruteraan Rangkaian Telekomunikasi (Kampus Sultan Saiful Rijal & UNN)'
       ],
       recommendedCoursesMs: [
-        'ISQ in Rig Rigger & Scaffolding Operations (Offshore BSP)',
-        'ISQ in Marker Fitter & Pipe Welding Specialist',
-        'HNTec Industrial Apprenticeship in Plant Engineering Operations'
+        'ISQ in Industrial Welding (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Scaffolding Operations (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Rigging & Rigger Fitter (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'ISQ in Marker Fitter & Pipe Fitting (Kampus Sultan Bolkiah & Industri Minyak/Gas)',
+        'Skim Perantisan Deck Rating & Engine Rating (Akademi Maritim Brunei - Kampus Jefri Bolkiah)',
+        'Skim Perantisan Kejuruteraan Rangkaian Telekomunikasi (Kampus Sultan Saiful Rijal & UNN)'
       ],
       recommendedCoursesEn: [
-        'ISQ in Rig Rigger & Scaffolding Operations (Offshore BSP)',
-        'ISQ in Marker Fitter & Pipe Welding Specialist',
-        'HNTec Industrial Apprenticeship in Plant Engineering Operations'
+        'ISQ in Industrial Welding (Sultan Bolkiah Campus & Oil/Gas Industry)',
+        'ISQ in Scaffolding Operations (Sultan Bolkiah Campus & Oil/Gas Industry)',
+        'ISQ in Rigging & Rigger Fitter (Sultan Bolkiah Campus & Oil/Gas Industry)',
+        'ISQ in Marker Fitter & Pipe Fitting (Sultan Bolkiah Campus & Oil/Gas Industry)',
+        'Deck Rating & Engine Rating Apprenticeship (Brunei Maritime Academy - Jefri Bolkiah Campus)',
+        'Telecommunication Network Engineering Apprenticeship (Sultan Saiful Rijal Campus & UNN)'
       ],
       intakePortal: 'Pengambilan Khas Kerjasama Jabatan Tenaga & IBTE',
       intakePortalMs: 'Pengambilan Khas Kerjasama Jabatan Tenaga & IBTE',
@@ -549,7 +646,7 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
       allowanceInfoEn: ''
     },
 
-    // 6. Kolej Swasta: CCCT (Cosmopolitan College) / Micronet / LCB
+    // 7. Kolej Swasta: CCCT (Cosmopolitan College) / Micronet / LCB
     {
       id: 'private-colleges-ccct',
       name: 'Kolej Swasta: CCCT (Cosmopolitan College) / Micronet / LCB - Sijil & Diploma',
@@ -693,6 +790,47 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
     pb.reasonEn = `Politeknik Brunei requires at least 5 O-Level credits together with English Language credit (and Mathematics / Pure Science for technical courses).`;
   }
 
+  // Logic Evaluation for IBTE Diploma (Level 5)
+  const ibteDip = pathways.find((p) => p.id === 'ibte-diploma');
+  if (ibteDip) {
+    if (totalCredits >= 5 && engCredit && mathCredit) {
+      ibteDip.status = 'eligible';
+      ibteDip.statusLabelMs = 'Layak Penuh Diploma IBTE (Tahap 5)';
+      ibteDip.statusLabelEn = 'Fully Eligible for IBTE Level 5 Diploma';
+      ibteDip.statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+      ibteDip.reasonMs = `Tahniah! Anda mempunyai ${totalCredits} kredit O-Level berserta Kredit Bahasa Inggeris dan Matematik. Anda layak memohon program Diploma Tahap 5 BDQF di IBTE seperti Diploma Kejuruteraan Marin & Pengajian Nautika (Akademi Maritim Brunei JBC), Kawalan & Automasi, Pengendali Kilang Penapis, Teknologi Maklumat (ICT), Hospitaliti & Seni Kulinari, Agroteknologi, atau Perkhidmatan Perniagaan.`;
+      ibteDip.reasonEn = `Congratulations! You have ${totalCredits} O-Level credits with English Language and Mathematics credits. You qualify for BDQF Level 5 Diploma programmes at IBTE including Marine Engineering & Nautical Studies (Brunei Maritime Academy JBC), Control & Automation, Refinery Operator, ICT, Hospitality & Culinary Arts, Agrotechnology, or Business Services.`;
+    } else if (totalCredits >= 5 && engCredit && !mathCredit) {
+      ibteDip.status = 'conditional';
+      ibteDip.statusLabelMs = 'Layak Diploma Hospitaliti & Perniagaan IBTE';
+      ibteDip.statusLabelEn = 'Eligible for IBTE Hospitality & Business Diplomas';
+      ibteDip.statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
+      ibteDip.reasonMs = `Anda mempunyai ${totalCredits} kredit O-Level dan Kredit Bahasa Inggeris. Anda layak untuk program Diploma IBTE dalam Pengurusan Hospitaliti dan Perkhidmatan Perniagaan. Walau bagaimanapun, program Kejuruteraan Marin, Nautika dan Automasi memerlukan Kredit Matematik.`;
+      ibteDip.reasonEn = `You have ${totalCredits} O-Level credits and an English Language credit. You qualify for IBTE Diplomas in Hospitality Management and Business Services. However, Marine Engineering, Nautical Studies, and Automation require a Mathematics credit.`;
+    } else if (totalCredits >= 5 && !engCredit) {
+      ibteDip.status = 'conditional';
+      ibteDip.statusLabelMs = 'Kredit Bahasa Inggeris Diperlukan';
+      ibteDip.statusLabelEn = 'English Credit Required';
+      ibteDip.statusColor = 'bg-amber-100 text-amber-900 border-amber-300';
+      ibteDip.reasonMs = `Anda mempunyai ${totalCredits} kredit O-Level tetapi program Diploma Tahap 5 IBTE mensyaratkan Kredit Bahasa Inggeris (Gred C6/C ke atas). Anda boleh menduduki semula Bahasa Inggeris atau memasuki laluan HNTec Tahap 4 terlebih dahulu.`;
+      ibteDip.reasonEn = `You have ${totalCredits} O-Level credits, but IBTE Level 5 Diplomas require an English Language credit (Grade C6/C or better). You may resit English or enter via HNTec Level 4 first.`;
+    } else if (totalCredits >= 3 && totalCredits <= 4) {
+      ibteDip.status = 'conditional';
+      ibteDip.statusLabelMs = 'Laluan Jambatan Melalui HNTec (Tahap 4)';
+      ibteDip.statusLabelEn = 'Bridging Pathway via HNTec (Level 4)';
+      ibteDip.statusColor = 'bg-amber-100 text-amber-900 border-amber-300';
+      ibteDip.reasonMs = `Anda mempunyai ${totalCredits} kredit. Program Diploma Tahap 5 memerlukan 5 kredit, namun anda boleh memulakan pengajian di HNTec (Tahap 4) selama 2 tahun di IBTE dan menyambung terus ke Diploma Tahap 5 dengan keputusan cemerlang (GPA > 2.7).`;
+      ibteDip.reasonEn = `You have ${totalCredits} credits. Level 5 Diplomas require 5 credits, but you can enter HNTec (Level 4) for 2 years at IBTE and progress directly to Level 5 Diploma with strong academic performance (GPA > 2.7).`;
+    } else {
+      ibteDip.status = 'not_eligible';
+      ibteDip.statusLabelMs = 'Disyorkan Laluan HNTec / NTec';
+      ibteDip.statusLabelEn = 'Recommended for HNTec / NTec Track';
+      ibteDip.statusColor = 'bg-slate-100 text-slate-700 border-slate-300';
+      ibteDip.reasonMs = `Kemasukan terus ke Diploma Tahap 5 IBTE memerlukan sekurang-kurangnya 5 kredit O-Level. Anda disyorkan memohon program HNTec Tahap 4 (3 kredit) atau NTec Tahap 3 terlebih dahulu.`;
+      ibteDip.reasonEn = `Direct admission to IBTE Level 5 Diploma requires at least 5 O-Level credits. You are recommended to apply for HNTec Level 4 programmes (minimum 3 credits) or NTec Level 3 first.`;
+    }
+  }
+
   // Logic Evaluation for IBTE HNTec
   const hntec = pathways.find((p) => p.id === 'ibte-hntec')!;
   if (totalCredits >= 3) {
@@ -700,8 +838,8 @@ export function evaluatePathways(subjects: SubjectGrade[]): PathwayOption[] {
     hntec.statusLabelMs = 'Layak Penuh HNTec';
     hntec.statusLabelEn = 'Fully Eligible for HNTec';
     hntec.statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-    hntec.reasonMs = `Tahniah! Anda mempunyai ${totalCredits} kredit (melebihi syarat minimum 3 kredit). Anda layak memilih mana-mana program HNTec di IBTE Nakhoda Ragam, Sultan Saiful Rijal, Agro-Teknologi Wasan dan Jefri Bolkiah.`;
-    hntec.reasonEn = `Congratulations! You have ${totalCredits} credits (satisfying the 3 credits requirement). You qualify for all HNTec programmes at IBTE campuses across Brunei.`;
+    hntec.reasonMs = `Tahniah! Anda mempunyai ${totalCredits} kredit (melebihi syarat minimum 3 kredit). Anda layak memilih program HNTec merentasi 7 kampus cawangan IBTE di seluruh Brunei (Sultan Saiful Rijal, Nakhoda Ragam, Mekanikal, Perniagaan, Agro-Teknologi Wasan, Jefri Bolkiah & Sultan Bolkiah).`;
+    hntec.reasonEn = `Congratulations! You have ${totalCredits} credits (satisfying the 3 credits requirement). You qualify for HNTec programmes across all 7 IBTE campuses nationwide.`;
   } else if (totalCredits === 2) {
     hntec.status = 'conditional';
     hntec.statusLabelMs = 'Bersyarat / Temu Duga Khas';

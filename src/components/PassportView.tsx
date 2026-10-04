@@ -35,11 +35,21 @@ export const STANDARD_BRUNEI_PATHWAYS = [
   'Politeknik Brunei (PB) - School of ICT (Ong Sum Ping)',
   'Politeknik Brunei (PB) - School of Business (Ong Sum Ping)',
   'Politeknik Brunei (PB) - School of Health Sciences (PAPRSB IHS)',
-  'IBTE Nakhoda Ragam Campus - HNTec in Construction / Geomatics / IT',
-  'IBTE Sultan Saiful Rijal Campus - HNTec in Hospitality / ICT / Aviation',
-  'IBTE Jefri Bolkiah Campus (Kuala Belait) - HNTec in Engineering / Energy',
-  'IBTE Agro-Technology Campus (Wasan) - HNTec in Agro-Technology',
-  'IBTE Skills (NTec / ISQ Apprenticeship)',
+  'IBTE Diploma (Level 5) - Marine Engineering & Nautical Studies (Brunei Maritime Academy - Jefri Bolkiah)',
+  'IBTE Diploma (Level 5) - Control & Automation / Refinery Operator (Jefri Bolkiah Campus)',
+  'IBTE Diploma (Level 5) - Information & Communication Technology (Sultan Saiful Rijal & Jefri Bolkiah)',
+  'IBTE Diploma (Level 5) - Hospitality Management & Culinary Arts (Sultan Saiful Rijal Campus)',
+  'IBTE Diploma (Level 5) - Agrotechnology (Agro-Technology Campus Wasan)',
+  'IBTE Diploma (Level 5) - Business & Financial Services (Business Campus Gadong)',
+  'IBTE Sultan Saiful Rijal Campus - HNTec in Aviation / Hospitality / ICT',
+  'IBTE Nakhoda Ragam Campus - HNTec in Building Services / Construction / Geomatics / Interior Design',
+  'IBTE Mechanical Campus (Tungku) - HNTec in Automotive Technology & Heavy Vehicles',
+  'IBTE Business Campus (Gadong) - HNTec in Business Management / Accounting / Office Admin',
+  'IBTE Agro-Technology Campus (Wasan) - HNTec in Agrotechnology & Laboratory Science',
+  'IBTE Jefri Bolkiah Campus (Kuala Belait) - HNTec in Plant Engineering / Energy / ICT',
+  'IBTE Sultan Bolkiah Campus (Seria) - HNTec in Instrumentation / Mechanical & Manufacturing',
+  'IBTE Skills (NTec - 7 Campuses Nationwide)',
+  'IBTE Industry Apprenticeship (ISQ Energy - Welding / Scaffolding / Rigging / Marker Fitter)',
   'Kolej Swasta - Cosmopolitan College of Commerce & Technology (CCCT)',
   'Kolej Swasta - Micronet International College (Computing & IT)',
   'Kolej Swasta - Laksamana College of Business (LCB)',
@@ -79,6 +89,9 @@ export const PassportView: React.FC<PassportViewProps> = ({
     }
     if (optLower.includes('politeknik') || optLower.includes('pb')) {
       return evaluatedPathways.find(p => p.id === 'politeknik-brunei')?.status !== 'not_eligible';
+    }
+    if (optLower.includes('ibte') && optLower.includes('diploma')) {
+      return evaluatedPathways.find(p => p.id === 'ibte-diploma')?.status !== 'not_eligible';
     }
     if (optLower.includes('hntec')) {
       return evaluatedPathways.find(p => p.id === 'ibte-hntec')?.status !== 'not_eligible';

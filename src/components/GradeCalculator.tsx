@@ -76,7 +76,10 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
     return cur === name || cur === nameMs || cur === nameEn || (pathway.id && cur.includes(pathway.id)) ||
       (pathway.id === 'ptet-sixth-form' && cur.includes('tingkatan enam')) ||
       (pathway.id === 'politeknik-brunei' && cur.includes('politeknik')) ||
-      (pathway.id === 'ibte-hntec' && cur.includes('ibte'));
+      (pathway.id === 'ibte-diploma' && cur.includes('diploma') && cur.includes('ibte')) ||
+      (pathway.id === 'ibte-hntec' && (cur.includes('hntec') || (cur.includes('ibte') && !cur.includes('diploma') && !cur.includes('ntec') && !cur.includes('perantisan')))) ||
+      (pathway.id === 'ibte-ntec' && cur.includes('ntec')) ||
+      (pathway.id === 'ibte-apprenticeship' && (cur.includes('perantisan') || cur.includes('apprenticeship')));
   };
 
   const isSelectedAsSecond = (pathway: PathwayOption) => {
@@ -88,7 +91,10 @@ export const GradeCalculator: React.FC<GradeCalculatorProps> = ({
     return cur === name || cur === nameMs || cur === nameEn || (pathway.id && cur.includes(pathway.id)) ||
       (pathway.id === 'ptet-sixth-form' && cur.includes('tingkatan enam')) ||
       (pathway.id === 'politeknik-brunei' && cur.includes('politeknik')) ||
-      (pathway.id === 'ibte-hntec' && cur.includes('ibte'));
+      (pathway.id === 'ibte-diploma' && cur.includes('diploma') && cur.includes('ibte')) ||
+      (pathway.id === 'ibte-hntec' && (cur.includes('hntec') || (cur.includes('ibte') && !cur.includes('diploma') && !cur.includes('ntec') && !cur.includes('perantisan')))) ||
+      (pathway.id === 'ibte-ntec' && cur.includes('ntec')) ||
+      (pathway.id === 'ibte-apprenticeship' && (cur.includes('perantisan') || cur.includes('apprenticeship')));
   };
 
   const handleSelectFirstChoice = (pathway: PathwayOption) => {

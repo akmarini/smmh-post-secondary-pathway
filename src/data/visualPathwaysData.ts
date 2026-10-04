@@ -82,7 +82,7 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
     careerOutcomesMs: ['Menentukan kelayakan kemasukan institusi pengajian tinggi atau latihan vokasional'],
     careerOutcomesEn: ['Determines admission pathways into higher education or vocational apprenticeships'],
     tags: ['O-Level', 'Tahun 11', 'Asas Keputusan'],
-    connectsTo: ['track-sixthform', 'track-polytechnic', 'track-ibte-hntec', 'track-ibte-ntec', 'track-private-foundation', 'track-private-diploma', 'track-isq-apprentice', 'track-direct-uniformed']
+    connectsTo: ['track-sixthform', 'track-polytechnic', 'track-ibte-diploma', 'track-ibte-hntec', 'track-ibte-ntec', 'track-private-foundation', 'track-private-diploma', 'track-isq-apprentice', 'track-direct-uniformed']
   },
 
   // 2. STREAM A: SIXTH FORM (PTET / A-LEVELS)
@@ -169,7 +169,58 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
     connectsTo: ['dest-university-local', 'dest-career-industry']
   },
 
-  // 4. STREAM C: IBTE HNTEC (BDQF LEVEL 4)
+  // 4. STREAM C: IBTE DIPLOMA LEVEL 5 (HIGHER TVET)
+  {
+    id: 'track-ibte-diploma',
+    stream: 'tvet',
+    stageLevel: 'post_secondary',
+    stageOrder: 2,
+    titleMs: 'IBTE Diploma (Tahap 5 BDQF - Kejuruteraan Marin, Nautika & Automasi)',
+    titleEn: 'IBTE Diploma (BDQF Level 5 - Marine Eng, Nautical Studies & Automation)',
+    institutionMs: 'Institut Pendidikan Teknikal Brunei (Akademi Maritim Brunei & Kampus Cawangan IBTE)',
+    institutionEn: 'Institute of Brunei Technical Education (Brunei Maritime Academy & IBTE Campuses)',
+    qualificationMs: 'Diploma Kebangsaan Tinggi BDQF Tahap 5',
+    qualificationEn: 'BDQF Level 5 Higher National Diploma',
+    bdqfLevel: 'BDQF Tahap 5',
+    durationMs: '2.5 - 3 Tahun (Termasuk Latihan Industri Antarabangsa / Pelayaran Laut)',
+    durationEn: '2.5 - 3 Years (Includes International / Sea-Time Apprenticeship)',
+    minCredits: 5,
+    entryRequirementMs: 'Minimum 5 Kredit O-Level (Wajib Kredit Bahasa Inggeris & Matematik/Sains bagi bidang Kejuruteraan/Maritim) atau HNTec Tahap 4 (GPA >= 2.7).',
+    entryRequirementEn: 'Minimum 5 O-Level Credits (Mandatory English Language & Mathematics/Science for Engineering/Maritime) or HNTec Level 4 (GPA >= 2.7).',
+    colorTheme: {
+      bg: 'bg-cyan-950',
+      border: 'border-cyan-500',
+      text: 'text-cyan-200',
+      badge: 'bg-cyan-500 text-slate-950 font-bold',
+      glow: 'shadow-cyan-500/20'
+    },
+    summaryMs: 'Program Diploma Tinggi TVET berprestij di IBTE merangkumi Kejuruteraan Marin dan Pengajian Nautika di bawah Akademi Maritim Brunei (Jefri Bolkiah Campus) serta Kejuruteraan Automasi, ICT, Agroteknologi, dan Hospitaliti.',
+    summaryEn: 'Prestigious Higher TVET Diplomas at IBTE encompassing Marine Engineering and Nautical Studies under the Brunei Maritime Academy (Jefri Bolkiah Campus) alongside Automation, ICT, Agrotechnology, and Hospitality.',
+    keyFieldsMs: [
+      'Akademi Maritim Brunei (Diploma in Marine Engineering & Nautical Studies - JBC)',
+      'School of Energy & Engineering (Diploma in Control & Automation / Refinery Operator - JBC)',
+      'School of ICT (Diploma in Information & Communication Technology - SSRC & JBC)',
+      'School of Hospitality & Tourism (Diploma in Hospitality Management & Culinary Arts - SSRC)',
+      'School of Agrotechnology (Diploma in Agricultural Technology - ATC Wasan)',
+      'School of Business (Diploma in Business & Financial Services - BC Gadong)'
+    ],
+    keyFieldsEn: [
+      'Brunei Maritime Academy (Diploma in Marine Engineering & Nautical Studies - JBC)',
+      'School of Energy & Engineering (Diploma in Control & Automation / Refinery Operator - JBC)',
+      'School of ICT (Diploma in Information & Communication Technology - SSRC & JBC)',
+      'School of Hospitality & Tourism (Diploma in Hospitality Management & Culinary Arts - SSRC)',
+      'School of Agrotechnology (Diploma in Agricultural Technology - ATC Wasan)',
+      'School of Business (Diploma in Business & Financial Services - BC Gadong)'
+    ],
+    progressionNextMs: ['Kemasukan Lanjutan ke Ijazah Sarjana Muda Universiti (UTB / Luar Negara)', 'Pegawai Maritim / Jurutera Kanan Industri'],
+    progressionNextEn: ['Advanced Standing into University Bachelor Degrees (UTB / Overseas)', 'Licensed Maritime Officer / Senior Industrial Engineer'],
+    careerOutcomesMs: ['Pegawai Navigasi Kapal / Jurutera Marin', 'Jurutera Sistem Automasi', 'Pakar Keselamatan Rangkaian', 'Pengurus Operasi Hospitaliti'],
+    careerOutcomesEn: ['Ship Navigation Officer / Marine Engineer', 'Automation Control Systems Engineer', 'Network Security Specialist', 'Hospitality Operations Manager'],
+    tags: ['IBTE', 'Diploma Level 5', 'Akademi Maritim Brunei', '5 Kredit', 'Jefri Bolkiah'],
+    connectsTo: ['dest-university-local', 'dest-career-industry']
+  },
+
+  // 5. STREAM D: IBTE HNTEC (BDQF LEVEL 4)
   {
     id: 'track-ibte-hntec',
     stream: 'tvet',
@@ -177,8 +228,8 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
     stageOrder: 2,
     titleMs: 'IBTE HNTec (Higher National Technical Education Certificate)',
     titleEn: 'IBTE HNTec (Higher National Technical Education Certificate)',
-    institutionMs: 'Institut Pendidikan Teknikal Brunei (IBTE - Semua Kampus)',
-    institutionEn: 'Institute of Brunei Technical Education (IBTE - All Campuses)',
+    institutionMs: 'Institut Pendidikan Teknikal Brunei (Semua 7 Kampus Cawangan IBTE)',
+    institutionEn: 'Institute of Brunei Technical Education (All 7 IBTE Campuses Nationwide)',
     qualificationMs: 'HNTec (Sijil Pendidikan Teknikal Kebangsaan Tinggi)',
     qualificationEn: 'HNTec (Higher National Technical Education Certificate)',
     bdqfLevel: 'BDQF Tahap 4',
@@ -194,31 +245,37 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
       badge: 'bg-amber-500 text-slate-950 font-bold',
       glow: 'shadow-amber-500/20'
     },
-    summaryMs: 'Program kemahiran teknikal lanjutan peringkat kebangsaan dengan latihan praktikal bengkel, teknologi moden, dan latihan industri wajib 6 bulan.',
-    summaryEn: 'National advanced technical certificate featuring hands-on workshop competencies, modern engineering equipment, and a mandatory 6-month industrial internship.',
+    summaryMs: 'Program kemahiran teknikal lanjutan peringkat kebangsaan dengan latihan praktikal bengkel, teknologi moden, dan latihan industri wajib 6 bulan di 7 kampus IBTE.',
+    summaryEn: 'National advanced technical certificate featuring hands-on workshop competencies, modern engineering equipment, and a mandatory 6-month industrial internship across 7 IBTE campuses.',
     keyFieldsMs: [
-      'Kejuruteraan Automotif & Kenderaan Berat',
-      'Kejuruteraan Bangunan & Perkhidmatan Bangunan',
-      'Rangkaian Komputer & Teknologi Maklumat',
-      'Hospitaliti & Pengurusan Acara',
-      'Operasi Loji & Penyelenggaraan Mekanikal'
+      'Kejuruteraan Penyelenggaraan Pesawat (Sultan Saiful Rijal Campus)',
+      'Hospitaliti, Kulinari & Pelancongan (Sultan Saiful Rijal Campus)',
+      'Teknologi Maklumat & Rangkaian Komputer (Sultan Saiful Rijal & Jefri Bolkiah)',
+      'Perkhidmatan Bangunan, Geomatika & Reka Bentuk Dalaman (Nakhoda Ragam Campus)',
+      'Teknologi Automotif & Kenderaan Berat (Mechanical Campus Tungku)',
+      'Pengurusan Perniagaan & Perakaunan (Business Campus Gadong)',
+      'Agroteknologi & Sains Makmal (Agro-Technology Campus Wasan)',
+      'Operasi Loji & Kejuruteraan Instrumentasi (Jefri Bolkiah & Sultan Bolkiah Campuses)'
     ],
     keyFieldsEn: [
-      'Automotive & Heavy Vehicle Technology',
-      'Building Engineering & Building Services',
-      'Computer Networking & Information Technology',
-      'Hospitality Management & Culinary',
-      'Plant Operations & Mechanical Maintenance'
+      'Aircraft Maintenance Engineering (Sultan Saiful Rijal Campus)',
+      'Hospitality, Culinary Arts & Tourism (Sultan Saiful Rijal Campus)',
+      'Information Technology & Computer Networking (Sultan Saiful Rijal & Jefri Bolkiah)',
+      'Building Services, Geomatics & Interior Design (Nakhoda Ragam Campus)',
+      'Automotive & Heavy Vehicle Technology (Mechanical Campus Tungku)',
+      'Business Management & Accounting (Business Campus Gadong)',
+      'Agrotechnology & Laboratory Science (Agro-Technology Campus Wasan)',
+      'Plant Engineering & Instrumentation (Jefri Bolkiah & Sultan Bolkiah Campuses)'
     ],
-    progressionNextMs: ['Menyambung ke Diploma BDQF Tahap 5 di Politeknik Brunei', 'Kerjaya Juruteknik Kanan & Penyelia Industri'],
-    progressionNextEn: ['Articulation into BDQF Level 5 Diploma at Politeknik Brunei', 'Senior Technician & Industrial Supervisory Roles'],
-    careerOutcomesMs: ['Juruteknik Kanan Automotif', 'Penyelia Penyelenggaraan Loji', 'Juruteknik Rangkaian IT', 'Penyelia Hospitaliti'],
-    careerOutcomesEn: ['Senior Automotive Technician', 'Plant Maintenance Supervisor', 'IT Network Technician', 'Hospitality Operations Supervisor'],
-    tags: ['IBTE', 'HNTec', 'Level 4', '3-4 Kredit', 'Kemahiran Teknikal'],
-    connectsTo: ['track-polytechnic', 'dest-career-industry']
+    progressionNextMs: ['Menyambung ke Diploma BDQF Tahap 5 di Politeknik Brunei atau IBTE', 'Kerjaya Juruteknik Kanan & Penyelia Industri'],
+    progressionNextEn: ['Articulation into BDQF Level 5 Diploma at Politeknik Brunei or IBTE', 'Senior Technician & Industrial Supervisory Roles'],
+    careerOutcomesMs: ['Juruteknik Kanan Automotif', 'Penyelia Penyelenggaraan Loji', 'Juruteknik Rangkaian IT', 'Penyelia Hospitaliti', 'Juruteknik Penyelenggaraan Pesawat'],
+    careerOutcomesEn: ['Senior Automotive Technician', 'Plant Maintenance Supervisor', 'IT Network Technician', 'Hospitality Operations Supervisor', 'Aircraft Maintenance Technician'],
+    tags: ['IBTE', 'HNTec', 'Level 4', '3-4 Kredit', 'Kemahiran Teknikal', '7 Kampus'],
+    connectsTo: ['track-polytechnic', 'track-ibte-diploma', 'dest-career-industry']
   },
 
-  // 5. STREAM D: IBTE NTEC & ISQ APPRENTICESHIP (BDQF LEVEL 3)
+  // 6. STREAM E: IBTE NTEC & ISQ APPRENTICESHIP (BDQF LEVEL 3)
   {
     id: 'track-ibte-ntec',
     stream: 'tvet',
@@ -226,8 +283,8 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
     stageOrder: 2,
     titleMs: 'IBTE NTec (National Technical Education Certificate)',
     titleEn: 'IBTE NTec (National Technical Education Certificate)',
-    institutionMs: 'Institut Pendidikan Teknikal Brunei (IBTE Kampus Mekanikal / Sultan Saiful Rijal / Jefri Bolkiah)',
-    institutionEn: 'IBTE Mechanical / Sultan Saiful Rijal / Jefri Bolkiah Campuses',
+    institutionMs: 'Institut Pendidikan Teknikal Brunei (Semua 7 Kampus Cawangan IBTE)',
+    institutionEn: 'Institute of Brunei Technical Education (All 7 IBTE Campuses Nationwide)',
     qualificationMs: 'NTec (Sijil Pendidikan Teknikal Kebangsaan)',
     qualificationEn: 'NTec (National Technical Education Certificate)',
     bdqfLevel: 'BDQF Tahap 3',
@@ -245,17 +302,31 @@ export const VISUAL_PATHWAY_NODES: VisualPathwayNode[] = [
     },
     summaryMs: 'Latihan asas vokasional yang berfokus kepada kemahiran kerja tangan praktikal (hands-on) di bengkel dan makmal untuk memenuhi keperluan tenaga kerja mahir tempatan.',
     summaryEn: 'Fundamental vocational training emphasizing hands-on trade craftsmanship in specialized workshops to fulfill national skilled workforce demand.',
-    keyFieldsMs: ['Penyamanan Udara & Penyejukan', 'Pemesinan & Fabrikasi Logam', 'Penyediaan Makanan & Pastri', 'Penyelenggaraan Elektrik Asas'],
-    keyFieldsEn: ['Air Conditioning & Refrigeration', 'Machining & Metal Fabrication', 'Food Preparation & Bakery', 'Basic Electrical Installation'],
+    keyFieldsMs: [
+      'Mekanik Kenderaan Ringan & Membaiki Badan Kenderaan (Mechanical Campus Tungku)',
+      'Pertukangan Bangunan, Paip & Bata (Nakhoda Ragam Campus)',
+      'Kemahiran Kulinari & Perkhidmatan Makanan (Sultan Saiful Rijal Campus)',
+      'Pentadbiran Perniagaan & Peruncitan (Business Campus Gadong)',
+      'Pengeluaran Tanaman, Akuakultur & Pemprosesan Makanan (Agro-Technology Campus Wasan)',
+      'Pemesinan & Fabrikasi Logam Perindustrian (Mechanical & Sultan Bolkiah Campuses)'
+    ],
+    keyFieldsEn: [
+      'Light Vehicle Mechanics & Body Repair (Mechanical Campus Tungku)',
+      'Building Craft - Carpentry, Plumbing & Masonry (Nakhoda Ragam Campus)',
+      'Culinary Skills & Food Beverage Operations (Sultan Saiful Rijal Campus)',
+      'Business Administration & Retail Operations (Business Campus Gadong)',
+      'Crop Production, Aquaculture & Food Processing (Agro-Technology Campus Wasan)',
+      'Industrial Machining & Metal Fabrication (Mechanical & Sultan Bolkiah Campuses)'
+    ],
     progressionNextMs: ['Menyambung ke IBTE HNTec (BDQF Level 4) setelah tamat dengan cemerlang', 'Tenaga Kerja Mahir Industri'],
     progressionNextEn: ['Progression into IBTE HNTec (Level 4) upon merit completion', 'Certified Skilled Trade Workforce'],
-    careerOutcomesMs: ['Juruteknik Hawa Dingin', 'Jurumesin Fabrikasi Logam', 'Tukang Masak Restoran', 'Juruteknik Pendawaian'],
-    careerOutcomesEn: ['HVAC Air-Conditioning Technician', 'Metal Fabricator / Machinist', 'Commercial Restaurant Cook', 'Certified Wireman'],
+    careerOutcomesMs: ['Juruteknik Hawa Dingin', 'Jurumesin Fabrikasi Logam', 'Tukang Masak Restoran', 'Juruteknik Pendawaian Elektrik', 'Mekanik Kenderaan'],
+    careerOutcomesEn: ['HVAC Air-Conditioning Technician', 'Metal Fabricator / Machinist', 'Commercial Restaurant Cook', 'Certified Electrical Wireman', 'Vehicle Mechanic'],
     tags: ['IBTE', 'NTec', 'Level 3', '1-2 Kredit', 'Vokasional Amali'],
     connectsTo: ['track-ibte-hntec', 'dest-career-industry']
   },
 
-  // 6. STREAM E: PRIVATE INSTITUTIONS - FOUNDATION (CCCT, MICRONET, LCB, IGS, BICPA)
+  // 7. STREAM F: PRIVATE INSTITUTIONS - FOUNDATION (CCCT, MICRONET, LCB, IGS, BICPA)
   {
     id: 'track-private-foundation',
     stream: 'private',
